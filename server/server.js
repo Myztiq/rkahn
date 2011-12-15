@@ -9,6 +9,7 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.cookieParser());
   app.use(express.session({ secret: 'Whoa, Pants' }));
+  app.use(express.favicon(__dirname+'/../browser/images/favicon.ico'));
 
   app.set('views', __dirname + '/../browser/views');
   app.use(stylus.middleware({
@@ -21,7 +22,9 @@ app.configure(function(){
     }
   }));
   app.use(app.router);
+//  express.favicon();
   app.use(express.static(__dirname + '/../browser'));
+
 });
 
 fbGallery.init("AAAECI9o4wTkBAJ8H2HYtvRIJZB6YCN26ud1q3bUFYqEYDqzkoG7IMehS69Cihc183dX5gsF6SPETkhRs7EkdF11rwhUcZD");
@@ -40,6 +43,10 @@ app.get('/photos',function(req,res){
     res.render("gallery",{galleries:galleries});
   });
 });
+app.get('/favicon.ico',function(req,res){
+	res.send();
+});
+app.ge
 
 app.get('/:url',function(req,res){
 	res.render(req.params.url);

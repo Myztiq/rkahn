@@ -38,6 +38,10 @@ exports.updatePhotoGalleries = function(){
     });
     res.on('end', function () {
       if(res.statusCode == 200){
+	    albumModel.remove({},function(err){
+		    console.log(err);
+		    console.log('Removed All Models');
+	    });
         var results = JSON.parse(data);
         for(var i=0;i<results.data.length;i++){
           if(results.data[i].privacy == "everyone"){
@@ -87,27 +91,13 @@ function updateAlbumPhotos(photoGallery,coverID){
             photoGallery.coverPhoto.push(photo);
           }
         }
-        albumModel.findOne({ id: photoGallery.id}, function (err, doc){
-          if(doc != null){
-            albumModel.remove({id:photoGallery.id},function(){
-              photoGallery.save(function(err){
-                if(err){
-                  console.log(err);
-                }else{
-                  console.log("Save Complete");
-                }
-              });
-            });
-          }else{
-            photoGallery.save(function(err){
-              if(err){
-                console.log(err);
-              }else{
-                console.log("Save Complete");
-              }
-            });
-          }
-        });
+		photoGallery.save(function(err){
+		  if(err){
+			console.log(err);
+		  }else{
+			console.log("Save Complete");
+		  }
+		});
       }else{
         console.log(res.statusCode,data);
       }
