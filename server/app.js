@@ -46,7 +46,6 @@ app.get('/photos',function(req,res){
 app.get('/favicon.ico',function(req,res){
 	res.send();
 });
-app.ge
 
 app.get('/:url',function(req,res){
 	res.render(req.params.url);
@@ -65,3 +64,5 @@ app.post('/gallery/:id',function(req,res){
 //app.listen(8080);
 
 exports.app = app;
+
+console.log('rkahn started');
