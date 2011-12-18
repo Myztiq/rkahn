@@ -60,9 +60,6 @@ app.post('/gallery/:id',function(req,res){
   },req.params.id);
 });
 
-//app.listen(8080,'ryan-kahn');
-//app.listen(8080);
-
 exports.app = app;
 
 console.log('rkahn started');
