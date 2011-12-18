@@ -4,11 +4,11 @@
   "contributors": [
   ],
   "dependencies": {
-    "express": "2.3.11",
-    "ejs": "0.4.3",
-    "mongodb": "0.9.6-14",
-    "mongoose": "2.1.0",
-	"stylus": "0.17.0"
+    "express": "2.x",
+    "ejs": "0.x",
+    "mongodb": "0.x",
+    "mongoose": "2.x",
+	"stylus": "0.x"
   },
   "version": "0.1.0"
 }
