@@ -1,0 +1,290 @@
+<html>
+	<head>
+		<script src="threejs/build/Three.js"></script>
+		<script type="text/javascript" src="threejs/examples/js/RequestAnimationFrame.js"></script>
+		<script type="text/javascript" src="jquery.min.js"></script>
+	</head>
+	<body style="background-color:black; color:white;">
+		<script>
+			var pixelSizeToZ = 2;
+			var pixelMovementToZX = 2;
+			var pixelMovementToZY = 2;
+
+			var camera, scene, renderer,geometry, material, mesh;
+			var windowHalfX = window.innerWidth / 2;
+			var windowHalfY = window.innerHeight / 2;
+			var changeMouseY = 0, changeMouseX = 0;
+			var mouseX = 0, mouseY = 0;
+			var meshes = new Array();
+			var pixelized;
+			jQuery(document).ready(function(){
+				pic = jQuery("#pic")[0];
+
+				pic = new Image();
+
+				pic.src = "marcus.jpg";
+				pic.width=300;
+				pic.height=200;
+
+				pic.onload = function(){
+					pixelized = pixelize(pic);
+					init();
+					renderer = new THREE.CanvasRenderer();
+					renderer.setSize( window.innerWidth, window.innerHeight );
+					document.body.appendChild( renderer.domElement );
+
+					document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+					jQuery("canvas").mousedown(onDocumentMouseDown);
+					jQuery("canvas").mouseup(onDocumentMouseUp);
+					jQuery("[name='distanceZoom']").change(init);
+					jQuery("[name='movementRatio']").change(init);
+					jQuery("[name='movementModifier']").change(init);
+					animate();
+				}
+			});
+			function init() {
+				pixelSizeToZ = jQuery("[name='distanceZoom']").val()/20;
+				jQuery(".distanceZoom").html(pixelSizeToZ);
+
+				movementRatio = jQuery("[name='movementRatio']").val()/10;
+				jQuery(".movementRatio").html(movementRatio);
+
+				movementModifier = jQuery("[name='movementModifier']").val()/10;
+				jQuery(".movementModifier").html(movementModifier);
+
+				camera = new THREE.Camera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
+				camera.position.z = 300;
+				camera.position.x = 0;
+				camera.position.y = 0;
+
+
+				scene = new THREE.Scene();
+
+
+				var generalOffsetX = 10/2*pixelized[1].width;
+				var generalOffsetY = 10/2*pixelized[1].height;
+
+				for(x=0;x<pixelized.length;x++){
+					var pixel =pixelized[x];
+					material = new THREE.MeshBasicMaterial( { map: ImageUtils.loadTexture(pixel.imgData.src)} );
+
+
+					materials = [];
+					for ( var i = 0; i < 6; i ++ ) {
+						materials.push( [ new THREE.MeshBasicMaterial( { color: Math.random() * 0xffffff } ) ] );
+					}
+					//Front
+					materials[4] = [material];
+					//back
+//					materials[5] = [material];
+					calcHeight = pixelized[1].height-pixel.z*pixelSizeToZ;
+					calcWidth = pixelized[1].width-pixel.z*pixelSizeToZ;
+
+					geometry = new Cube(calcWidth, calcHeight,  0 , 1, 1, 1, materials);
+					mesh = new THREE.Mesh( geometry, new THREE.MeshFaceMaterial() );
+					mesh.position.x = pixel.x-generalOffsetX;
+					//If its above the midway point move it in. Otherwise move it out.
+					if(pixel.x  <= 150){
+						mesh.position.x = mesh.position.x+(pixel.z-movementModifier)*movementRatio;
+					}else{
+						mesh.position.x = mesh.position.x-(pixel.z-movementModifier)*movementRatio;
+					}
+
+					mesh.position.y = -pixel.y+generalOffsetY;
+					
+					if(pixel.y >= 100){
+						mesh.position.y = mesh.position.y+(pixel.z-movementModifier)*movementRatio;
+					}else{
+						mesh.position.y = mesh.position.y-(pixel.z-movementModifier)*movementRatio;
+					}
+
+					mesh.position.z = pixel.z*30;
+					scene.addObject(mesh);
+
+					meshes.push(mesh);
+				}
+
+//
+//
+//				meshes[1] = new THREE.Mesh( geometry, material );
+//				scene.addObject( meshes[1] );
+//
+//
+//				geometry = new Cube( 50, 50, 20 );
+//
+//				material = new THREE.MeshBasicMaterial( { color: Math.random() * 0xffffff, opacity: .7, wireframe: false } );
+//				meshes[2] = new THREE.Mesh( geometry, material );
+//				meshes[2].position.x = 120;
+//				scene.addObject( meshes[2] );
+//
+//				material = new THREE.MeshBasicMaterial( { color: Math.random() * 0xffffff, opacity: .7, wireframe: false } );
+//				meshes[3] = new THREE.Mesh( geometry, material );
+//				meshes[3].position.x = -120;
+//				scene.addObject( meshes[3] );
+//
+//				material = new THREE.MeshBasicMaterial( { color: Math.random() * 0xffffff, opacity: .7, wireframe: false } );
+//				meshes[4] = new THREE.Mesh( geometry, material );
+//				meshes[4].position.y = -120;
+//				scene.addObject( meshes[4] );
+//
+//				material = new THREE.MeshBasicMaterial( { color: Math.random() * 0xffffff, opacity: .7, wireframe: false } );
+//				meshes[5] = new THREE.Mesh( geometry, material );
+//				meshes[5].position.y = 120;
+//				scene.addObject( meshes[5] );
+//
+//				material = new THREE.MeshBasicMaterial( { color: Math.random() * 0xffffff, opacity: .7, wireframe: false } );
+//				meshes[6] = new THREE.Mesh( geometry, material );
+//				meshes[6].position.z = 120;
+//				scene.addObject( meshes[6] );
+//
+//				material = new THREE.MeshBasicMaterial( { color: Math.random() * 0xffffff, opacity: .7, wireframe: false } );
+//				meshes[7] = new THREE.Mesh( geometry, material );
+//				meshes[7].position.z = -120;
+//				scene.addObject( meshes[7] );
+
+
+
+			}
+
+			function animate() {
+				// Include examples/js/RequestAnimationFrame.js for cross-browser compatibility.
+				requestAnimationFrame( animate );
+				render();
+			}
+			var mouseDown = false;
+			var mouseMoveSinceDown = false;
+			function onDocumentMouseDown(event){
+				mouseDown = true;
+				mouseMoveSinceDown = false;
+			}
+			function onDocumentMouseUp(event){
+				mouseDown = false;
+			}
+
+
+			function onDocumentMouseMove( event ) {
+				if(mouseDown && mouseMoveSinceDown){
+					mouseXTemp =  ( event.clientX - windowHalfX );
+					mouseYTemp =  ( event.clientY - windowHalfY );
+					changeMouseY = mouseY-mouseYTemp;
+					changeMouseX = mouseX-mouseXTemp;
+				}
+				if(mouseDown){
+					mouseMoveSinceDown = true;
+					mouseX =  ( event.clientX - windowHalfX );
+					mouseY =  ( event.clientY - windowHalfY );
+				}
+			}
+			function render() {
+//				camera.position.x += 1;
+
+				var rotationX = 0.0;
+				var rotationY = 0.0;
+				var rotationZ = 0.0;
+				
+				rotationY = changeMouseX/100;
+				rotationX = changeMouseY/100;
+				changeMouseX = 0;
+				changeMouseY = 0;
+
+				//http://thronic.com/devnotes/3D%20Rotation%20Trig.htm
+				newY = Math.cos(rotationX)*camera.position.y - Math.sin(rotationX)*camera.position.z;
+				newZ = Math.sin(rotationX)*camera.position.y + Math.cos(rotationX)*camera.position.z;
+
+				// Rotation around the X axis
+				xy = Math.cos(rotationX)*camera.position.y - Math.sin(rotationX)*camera.position.z;
+				xz = Math.sin(rotationX)*camera.position.y + Math.cos(rotationX)*camera.position.z;
+
+				// Rotation around the Y axis
+				yz = Math.cos(rotationY)*xz - Math.sin(rotationY)*camera.position.x;
+				yx = Math.sin(rotationY)*xz + Math.cos(rotationY)*camera.position.x;
+
+				// Rotation around the Z axis
+				zx = Math.cos(rotationZ)*yx - Math.sin(rotationZ)*xy;
+				zy = Math.sin(rotationZ)*yx + Math.cos(rotationZ)*xy;
+
+				camera.position.x = zx;
+				camera.position.y = zy;
+				camera.position.z = yz;
+
+				renderer.render( scene, camera );
+			}
+
+
+
+			function pixelize(img){
+				var pixilization = [];
+				var a = ["-4","-3","-2","-1","0","1","2","3","4"];
+				a.sort( function(){
+					return Math.round(Math.random())-0.5;
+				});
+				var result = [];
+				for(x=0;x<a.length;x++){
+					var shifted = a.shift();
+					a.push(shifted);
+					result[x] = jQuery.extend([], a);
+				}
+				result.sort( function(){
+					return Math.round(Math.random())-0.5;
+				});
+				var canvas = document.getElementById("canvas");
+				var ctx = canvas.getContext("2d");
+				ctx.drawImage(img,0,0);
+				var avgPixel = {
+					width:Math.floor(img.width/a.length),
+					height:Math.floor(img.height/a.length)
+				};
+				var workspace = document.getElementById("workspace");
+				var wkCtx = workspace.getContext("2d");
+				for(var x=0;x<result.length;x++){
+					var sub = result[x];
+					for(var y=0;y<sub.length;y++){
+						var currentWidth = avgPixel.width;
+						var currentHeight = avgPixel.height;
+
+						var offsetX = avgPixel.width*y;
+						var offsetY = avgPixel.height*x;
+
+						var imagedata = ctx.getImageData(offsetX, offsetY, currentWidth, currentHeight);
+						workspace.height = imagedata.height;
+						workspace.width = imagedata.width;
+						wkCtx.putImageData(imagedata,0,0);
+
+						var img = document.createElement("img");
+						img.src = workspace.toDataURL("image/png");
+						
+						//Debugging
+//						document.body.appendChild( img );
+//						if(y == 0){
+//							jQuery(img).attr("style","float:left; clear:both");
+//						}else{
+//							jQuery(img).attr("style","float:left");
+//						}
+
+						imagedata = img;
+
+						var pixel = {
+							imgData:imagedata,
+							x:offsetX,
+							y:offsetY,
+							z: parseInt(sub[y]),
+							width:currentWidth,
+							height:currentHeight
+						}
+						pixilization.push(pixel);
+					}
+				}
+				return pixilization;
+			}
+		</script>
+		Size Multiplier: <input type="range"  name="distanceZoom" min="0" max="100" step="1" value="2" /><span class="distanceZoom"></span>
+		<br/>
+		Movement Ratio: <input type="range"  name="movementRatio" min="0" max="100" step="1" value="2" /><span class="movementRatio"></span>
+		<br/>
+		Movement Modifier: <input type="range"  name="movementModifier" min="-50" max="50" step="1" value="2" /><span class="movementModifier"></span>
+		<div style="display:none">
+		<canvas id="canvas" height="500" width="500"></canvas>
+		<canvas id="workspace" height="500" width="500"></canvas>
+	</div>
+	</body>
+</html>
