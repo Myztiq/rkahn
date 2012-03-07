@@ -4,11 +4,12 @@
   "contributors": [
   ],
   "dependencies": {
-    "express": "2.x",
-    "ejs": "0.x",
-    "mongodb": "0.x",
-    "mongoose": "2.x",
-	"stylus": "0.x"
+    "express": "2.x"
+    , "ejs": "0.x"
+    , "mongodb": "0.x"
+    , "mongoose": "2.x"
+	  , "stylus": "0.x"
+    , "jade": "0.x"
   },
   "version": "0.1.0"
 }

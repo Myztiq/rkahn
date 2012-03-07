@@ -1,0 +1,79 @@
+!!! 5
+html
+  head
+    block head
+      link(href='http://fonts.googleapis.com/css?family=Droid+Sans', rel='stylesheet', type='text/css')
+      link(href='http://fonts.googleapis.com/css?family=Federo', rel='stylesheet', type='text/css')
+      script(src="/scripts/jquery.js")
+      script(src="/scripts/transformjs.1.0.beta.2.min.js")
+      script(src="/scripts/hoverIntent.js")
+      script(src="/scripts/navigation.js")
+      link(rel="stylesheet/less", type="text/css", href="/styles/styles.less")
+      script(src="/scripts/less.js", type="text/javascript")
+      block title
+        title Ryan Kahn - Web Developer
+  body
+    .content
+      block content
+      div(style="clear:both")
+    .headerContainer
+      .header
+        a(href="/")
+          .logo
+        .navigation
+          ul
+            li
+              a(href="http://fataldawn.com") Fatal Dawn
+            li
+              a(href="/static/onlyCSS") CSS Only Game
+            li
+              a( href="http://www.twitapocalypse.com/") Twitapocalypse
+            li
+              a( href="/static/threejs/") ThreeJS
+            li
+              a(href="/static/duneRacer") webGL Level Editor
+            li
+              a(href="http://glydrs.com") Glydrs
+          .title
+            a(href="/projects") Projects
+              .pullString
+              .pullRing
+        .navigation
+          ul
+            li
+              a(href="/contact") Contact
+            li
+              a(href="http://vizualize.me/ryank") Resume
+            li
+              a(href="http://twitter.com/Myztiq") Twitter
+            li
+              a(href="http://www.linkedin.com/in/ryankahn") Linkedin
+            li
+              a(href="http://www.facebook.com/kahnr") Facebook
+          .title
+            a(href="/contact") About
+              .pullString
+              .pullRing
+        .navigation
+          ul
+            li(href="/photos") Photo Gallery
+          .title
+            a(href="/photos") Photos
+              .pullString
+              .pullRing
+    .footer
+      | This work is licensed under a
+      a(rel="license", href="http://creativecommons.org/licenses/by-sa/3.0/") Creative Commons Attribution-ShareAlike 3.0 Unported License
+    .ribbon
+      a(href="https://github.com/Myztiq", rel="me") Fork me on GitHub
+    .background
+      .highlight
+    script
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-21079517-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();

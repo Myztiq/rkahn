@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<script src="threejs/build/Three.js"></script>
+		<script type="text/javascript" src="threejs/examples/js/RequestAnimationFrame.js"></script>
+		<script type="text/javascript" src="jquery.min.js"></script>
+	</head>
+	<body style="background-color:black; color:white;">
+		<script>
+			var camera, scene, renderer,geometry, material, mesh;
+			jQuery(document).ready(function(){
+				init();
+				renderer = new THREE.CanvasRenderer();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				document.body.appendChild( renderer.domElement );
+				animate();
+			});
+			function init() {
+				//Basic camera, it defaults to pointing at position 0,0,0 and starts at position 0,0,0
+				camera = new THREE.Camera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
+				//We move it out so we can actually see something from the outside.
+				camera.position.z = 100;
+				camera.position.x = 0;
+				camera.position.y = 0;
+				//Create a new scene. This is where we will put all our objects
+				scene = new THREE.Scene();
+				//Create a basic material that is a random color as a wireframe.
+				material =  new THREE.MeshBasicMaterial( { color: (Math.random() * 0xffffff), wireframe: true } );
+				//Create a basic geometric shape, in this case a cube.
+				geometry = new Cube( 50, 50, 50);
+				//Create a mesh of the material to the shape. This essentially rasterizes
+				// the objects into something the machine can display.
+				mesh = new THREE.Mesh( geometry, material );
+				//Add the mesh to the screen
+				scene.addObject( mesh);
+			}
+
+			//Animation, this gets called at each frame
+			function animate() {
+				//Rotate the meshed object
+                mesh.rotation.x += 0.01;
+                mesh.rotation.y += 0.01;
+                mesh.rotation.z += 0.01;
+				// Include examples/js/RequestAnimationFrame.js for cross-browser compatibility.
+				requestAnimationFrame( animate );
+				//Call the rendering.
+				render();
+			}
+
+			function render() {
+				//Render the scene to the camera.
+				renderer.render( scene, camera );
+			}
+		</script>
+	</body>
+</html>
