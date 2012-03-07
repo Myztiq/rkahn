@@ -109,7 +109,7 @@ block content
           .photoContainer(data-galleryID=gallery.id, style="opacity:0")
             img(src=gallery.coverPhoto[0].small)
             .caption(style="opacity:0")
-              name
+              = gallery.name
         - }
     .gallery(style="display:none")
   .clear
