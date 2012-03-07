@@ -60,6 +60,12 @@ app.post('/gallery/:id',function(req,res){
   },req.params.id);
 });
 
+
+app.error(function(err, req, res, next){
+  res.send('There was an error.');
+});
+
+
 exports.app = app;
 
 console.log('rkahn started');
