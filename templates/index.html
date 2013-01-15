@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% set pageID = "index" %}
+
+{% block body %}
+  <div class="row">
+    <div class="span8 offset2">
+      <h1>Ryan Kahn <br><small>Software Designer</small></h1>
+      <p>
+        Welcome to the world of Ryan Kahn. I am a developer by day and photographer by night.
+        My passion lies in furthering my skills and self mastery, from programming to photography to knowing my emotional triggers.
+        My life revolves around clear concise conversation and I seek to grow and apply my skills in all aspects of my life.
+        Don't hesitate to <a href="/contact">contact</a> me for any reason.
+      </p>
+    </div>
+  </div>
+  <div class="row pictures">
+    <div class="span4">
+      <a href="/projects">
+        <img src="/images/programmingLogo.png">
+      </a>
+    </div>
+    <div class="span4">
+      <a href="/contact">
+        <img src="/images/aboutLogo.png">
+      </a>
+    </div>
+    <div class="span4">
+      <a href="/photos">
+        <img src="/images/photographyLogo.png">
+      </a>
+    </div>
+  </div>
+{% endblock %}
