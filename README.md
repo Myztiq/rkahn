@@ -1,6 +1,6 @@
-InnCrisis
+[![Build Status](https://travis-ci.org/Myztiq/rkahn.png)](https://travis-ci.org/Myztiq/rkahn)
+
+My Personal Website
 =========
 
-InnCrisis enables non-profits to directly inform donors on how their specific donations are changing the world.
-
-See [the wiki](https://github.com/InnCrisis/InnCrisis/wiki) for more information.
+Currently I am playing around with a few different libraries and trying to optimize things.
