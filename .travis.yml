@@ -1,0 +1,14 @@
+language: ruby
+rvm:
+  - 1.9.3
+
+env:
+  global:
+    - secure: "gFf9YsW8b0J8NVMVvx25DhTpMVl2RsHPEPKtwj0M+16pbSYKQsJo1iVtdrBZ\ngYAZtnqxCg26RmfF16gDFmRJ2gUx4bZsXis1ohCfP7X6fL8pgZLXhCpr7Vng\nZPJhL6JqnZAWgwUHm/L6tEoMxLMPj7pshdg7X2mU6QbbGumXfaA="
+
+after_success:
+  - gem install heroku
+  - yes | ruby travis_deployer.rb
+  - heroku keys:clear
+  - yes | heroku keys:add
+  - git push heroku master
