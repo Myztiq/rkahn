@@ -22,9 +22,15 @@ app.configure ->
     live: !process.env.PRODUCTION
     uglify: process.env.PRODUCTION
 
+
+  bootstrapPath = path.join(__dirname, 'node_modules', 'bootstrap');
+
   app.use less
-    src: path.join __dirname, 'public'
+    paths: [path.join(bootstrapPath, 'less')]
+    src: path.join __dirname, 'public/less'
     once: false
+    prefix : '/stylesheets'
+    dest   : path.join(__dirname, 'public', 'stylesheets'),
 
   app.use express.favicon __dirname + '/public/images/favicon.ico'
   app.use express.static __dirname + '/public'
