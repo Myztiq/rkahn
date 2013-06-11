@@ -82,11 +82,18 @@ body{
 }
 @-webkit-keyframes slideIn {
   0% { top:-200px; }
+  80% { top: 0px; }
+}
+@-webkit-keyframes pullDown {
+  0% { padding-top:10px; }
   60% { padding-top: 25px; }
-  80% { padding-top: 7px; top: 0px; }
   100% {  padding-top: 10px; }
 }
-
+@-webkit-keyframes bounce {
+  0% { padding-top:10px; }
+  60% { padding-top: 15px; }
+  100% {  padding-top: 10px; }
+}
 
 .navigation{
   border-left: 10px solid transparent;
@@ -108,18 +115,12 @@ body{
     left: 200px;
     width: ~"calc(100% - 200px)";
     overflow: hidden;
+    -webkit-animation: slideIn 1s 0s;
     ul{
-      -webkit-animation: slideIn 2.2s 0s;
+      -webkit-animation: pullDown .7s 0s;
       padding-top: 10px;
-      &:nth-child(1){
-        -webkit-animation: slideIn 2s 0s;
-      }
-      &:nth-child(2){
-        -webkit-animation: slideIn 1.5s 0s;
-      }
-
       width: ~"calc(33% - 20px)";
-      margin: 0px 10px 5px 10px;
+      margin: 0px 10px 40px 10px;
       float: left;
       list-style: none;
       background-color:@headerColor;
@@ -128,7 +129,6 @@ body{
       .transition(~"max-height .7s .1s, opacity .2s .1s");
       opacity: .9;
       max-height: 0px;
-      margin-bottom: 40px;
       &:before{
         content: '';
         position: absolute;
@@ -187,6 +187,7 @@ body{
       &:hover{
         opacity: 1;
         max-height: 500px;
+        -webkit-animation: bounce .7s .1s;
         li{
           opacity: 1;
           .transition(opacity .2s .1s);
