@@ -6376,11 +6376,18 @@ body a:hover {
   padding-top: 5px;
 }
 @-webkit-keyframes slideIn {
-  from {
+  0% {
     top: -200px;
   }
-  to {
+  60% {
+    padding-top: 25px;
+  }
+  80% {
+    padding-top: 7px;
     top: 0px;
+  }
+  100% {
+    padding-top: 10px;
   }
 }
 .navigation {
@@ -6407,7 +6414,6 @@ body a:hover {
   left: 200px;
   width: calc(100% - 200px);
   overflow: hidden;
-  -webkit-animation: slideIn 1s 0s;
 }
 .navigation nav ul {
   -webkit-animation: slideIn 2.2s 0s;

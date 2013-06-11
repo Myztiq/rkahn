@@ -9,6 +9,6 @@ env:
 after_success:
   - gem install heroku
   - yes | ruby travis_deployer.rb
-  - heroku keys:clear
   - yes | heroku keys:add
   - git push heroku master
+  - for i in $(grep '[^\ ]*$' ~/.ssh/id_rsa.pub -o); do  heroku keys:remove $i;done
