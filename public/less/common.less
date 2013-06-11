@@ -81,7 +81,7 @@ body{
   padding-top: 5px;
 }
 @-webkit-keyframes slideIn {
-  from { top:-1000px; }
+  from { top:-200px; }
   to { top: 0px; }
 }
 
@@ -106,10 +106,10 @@ body{
     left: 200px;
     width: ~"calc(100% - 200px)";
     overflow: hidden;
-
+    -webkit-animation: slideIn 2.5s 0s;
     ul{
-
       -webkit-animation: slideIn 2.2s 0s;
+      padding-top: 10px;
       &:nth-child(1){
         -webkit-animation: slideIn 2s 0s;
       }
@@ -123,7 +123,6 @@ body{
       list-style: none;
       background-color:@headerColor;
       position: relative;
-      padding-top: 10px;
       padding-bottom: 4em;
       .transition(~"max-height .7s .1s, opacity .2s .1s");
       opacity: .9;

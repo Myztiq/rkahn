@@ -6377,7 +6377,7 @@ body a:hover {
 }
 @-webkit-keyframes slideIn {
   from {
-    top: -1000px;
+    top: -200px;
   }
   to {
     top: 0px;
@@ -6407,16 +6407,17 @@ body a:hover {
   left: 200px;
   width: calc(100% - 200px);
   overflow: hidden;
+  -webkit-animation: slideIn 2.5s 0s;
 }
 .navigation nav ul {
   -webkit-animation: slideIn 2.2s 0s;
+  padding-top: 10px;
   width: calc(33% - 20px);
   margin: 0px 10px 5px 10px;
   float: left;
   list-style: none;
   background-color: #222222;
   position: relative;
-  padding-top: 10px;
   padding-bottom: 4em;
   -webkit-transition: max-height .7s .1s, opacity .2s .1s;
   -moz-transition: max-height .7s .1s, opacity .2s .1s;
