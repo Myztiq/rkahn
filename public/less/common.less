@@ -80,10 +80,16 @@ body{
   text-align: center;
   padding-top: 5px;
 }
+@-webkit-keyframes slideIn {
+  from { top:-1000px; }
+  to { top: 0px; }
+}
+
 
 .navigation{
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
+  position: relative;
   .logo{
     margin-left: -10px;
     background-color: @headerColor;
@@ -94,7 +100,100 @@ body{
       opacity: .9;
     }
   }
+  nav{
+    position: absolute;
+    top: 0px;
+    left: 200px;
+    width: ~"calc(100% - 200px)";
+    overflow: hidden;
 
+    ul{
+
+      -webkit-animation: slideIn 2.2s 0s;
+      &:nth-child(1){
+        -webkit-animation: slideIn 2s 0s;
+      }
+      &:nth-child(2){
+        -webkit-animation: slideIn 1.5s 0s;
+      }
+
+      width: ~"calc(33% - 20px)";
+      margin: 0px 10px 5px 10px;
+      float: left;
+      list-style: none;
+      background-color:@headerColor;
+      position: relative;
+      padding-top: 10px;
+      padding-bottom: 4em;
+      .transition(~"max-height .7s .1s, opacity .2s .1s");
+      opacity: .9;
+      max-height: 0px;
+      margin-bottom: 40px;
+      &:before{
+        content: '';
+        position: absolute;
+        background-color: @headerColor;
+
+        height: 15px;
+        bottom: -15px;
+
+        left: 50%;
+        width: 6px;
+        margin-left: -3px;
+
+      }
+      &:after{
+        content: '';
+        position: absolute;
+
+        border: 2px solid @headerColor;
+        .border-radius(20px);
+
+        height: 16px;
+        bottom: -33px;
+
+        left: 50%;
+        width: 16px;
+        margin-left: -10px;
+
+
+      }
+      li{
+        .transition(opacity .2s .1s);
+        opacity: 0;
+        a{
+          padding: 5px 10px;
+          display: block;
+          color: @titleColor;
+          &:hover{
+            text-shadow: @headerColor 2px 2px 0px;
+            border-color: transparent;
+            text-decoration: none;
+            background-color: lighten(@headerColor, 20%);
+          }
+        }
+      }
+      .title{
+        color: @titleColor;
+        position: absolute;
+        bottom: 0px;
+        text-align: center;
+        display: block;
+        width: 100%;
+        font-size: 1.4em;
+        height: 2em;
+        opacity: 1;
+      }
+      &:hover{
+        opacity: 1;
+        max-height: 500px;
+        li{
+          opacity: 1;
+          .transition(opacity .2s .1s);
+        }
+      }
+    }
+  }
 }
 
 //

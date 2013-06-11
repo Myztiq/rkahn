@@ -6375,9 +6375,18 @@ body a:hover {
   text-align: center;
   padding-top: 5px;
 }
+@-webkit-keyframes slideIn {
+  from {
+    top: -1000px;
+  }
+  to {
+    top: 0px;
+  }
+}
 .navigation {
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
+  position: relative;
 }
 .navigation .logo {
   margin-left: -10px;
@@ -6391,6 +6400,100 @@ body a:hover {
 }
 .navigation .logo:hover {
   opacity: .9;
+}
+.navigation nav {
+  position: absolute;
+  top: 0px;
+  left: 200px;
+  width: calc(100% - 200px);
+  overflow: hidden;
+}
+.navigation nav ul {
+  -webkit-animation: slideIn 2.2s 0s;
+  width: calc(33% - 20px);
+  margin: 0px 10px 5px 10px;
+  float: left;
+  list-style: none;
+  background-color: #222222;
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 4em;
+  -webkit-transition: max-height .7s .1s, opacity .2s .1s;
+  -moz-transition: max-height .7s .1s, opacity .2s .1s;
+  -o-transition: max-height .7s .1s, opacity .2s .1s;
+  transition: max-height .7s .1s, opacity .2s .1s;
+  opacity: .9;
+  max-height: 0px;
+  margin-bottom: 40px;
+}
+.navigation nav ul:nth-child(1) {
+  -webkit-animation: slideIn 2s 0s;
+}
+.navigation nav ul:nth-child(2) {
+  -webkit-animation: slideIn 1.5s 0s;
+}
+.navigation nav ul:before {
+  content: '';
+  position: absolute;
+  background-color: #222222;
+  height: 15px;
+  bottom: -15px;
+  left: 50%;
+  width: 6px;
+  margin-left: -3px;
+}
+.navigation nav ul:after {
+  content: '';
+  position: absolute;
+  border: 2px solid #222222;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  height: 16px;
+  bottom: -33px;
+  left: 50%;
+  width: 16px;
+  margin-left: -10px;
+}
+.navigation nav ul li {
+  -webkit-transition: opacity 0.2s 0.1s;
+  -moz-transition: opacity 0.2s 0.1s;
+  -o-transition: opacity 0.2s 0.1s;
+  transition: opacity 0.2s 0.1s;
+  opacity: 0;
+}
+.navigation nav ul li a {
+  padding: 5px 10px;
+  display: block;
+  color: #e6e6e6;
+}
+.navigation nav ul li a:hover {
+  text-shadow: #222222 2px 2px 0px;
+  border-color: transparent;
+  text-decoration: none;
+  background-color: #555555;
+}
+.navigation nav ul .title {
+  color: #e6e6e6;
+  position: absolute;
+  bottom: 0px;
+  text-align: center;
+  display: block;
+  width: 100%;
+  font-size: 1.4em;
+  height: 2em;
+  opacity: 1;
+}
+.navigation nav ul:hover {
+  opacity: 1;
+  max-height: 500px;
+}
+.navigation nav ul:hover li {
+  opacity: 1;
+  -webkit-transition: opacity 0.2s 0.1s;
+  -moz-transition: opacity 0.2s 0.1s;
+  -o-transition: opacity 0.2s 0.1s;
+  transition: opacity 0.2s 0.1s;
 }
 #index .pictures {
   padding-top: 25px;
