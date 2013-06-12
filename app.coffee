@@ -40,9 +40,14 @@ app.configure ->
   app.use app.router
 
 
-
-app.get '*', (req, res)->
+app.get '/', (req, res)->
   res.render 'index.html'
+
+app.get '/contact', (req, res)->
+  res.render 'contact.html'
+
+app.get '/projects', (req, res)->
+  res.render 'projects.html'
 
 app.use (err, req, res, next)->
   throw err

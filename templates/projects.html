@@ -1,0 +1,283 @@
+{% extends "layout.html" %}
+
+{% set pageID = "index" %}
+
+{% block body %}
+
+  <div class="row">
+    <div class="span8 offset2">
+      <h1>Projects<br><small>My musings</small></h1>
+      <p>
+        Most of these projects were created in a single weekend. If you encounter any bugs please report them to me at <a href="ryan@ryan-kahn.com">ryan@ryan-kahn.com</a> or fork and fix them from my <a href="http://github.com/Myztiq">github profile</a>.
+      </p>
+    </div>
+  </div>
+
+  <div class="offset2">
+    <h2><a href="http://www.friendassassin.com">Friend Assassin</a></h2>
+  </div>
+  <div class="row">
+    <div class="span3 offset1">
+      <a href="http://www.friendassassin.com"><img src="/images/friendAssassin.png"></a>
+    </div>
+    <div class="span6">
+      <dl>
+        <dt>Site</dt>
+        <dd><a href="http://www.friendassassin.com">http://www.friendassassin.com</a></dd>
+        <dt>Github <i class="icon-github icon-huge"></i></dt>
+        <dd><a href="https://github.com/Myztiq/faceninja">https://github.com/Myztiq/faceninja</a></dd>
+        <dt>Description</dt>
+        <dd>
+          <a href="http://www.kinvey.com/about/sravishsridhar" target="_blank">Sravish</a>, the CEO of <a href="http://kinvey.com" target="_blank">Kinvey</a> has been toying with this idea for a long time. The concept is you oauth with facebook and play a
+                  fruit ninja style game where you kill all your friends faces as they pop up. <a href="http://soundcloud.com/knotar" target="_blank">Kevin Notar</a>, one of my friends has done all the sound
+                  effects for this game. This game is really a showcase for what Kinvey can do and my first time integrating with <a href="html5quintus.com" target="_blank">Quintus</a>, a game
+                  library built by <a href="https://twitter.com/cykod" target="_blank">Pascal Rettig</a>, a respected developer in the Boston community. All told, the initial designs for this game were working
+                  in about 15 hours of development. I initially intended on having this work with twitter
+                  also, but twitter sadly does not enable CORS support for it's images which is prohibitive of the explosion effect desired.
+        </dd>
+        <dt>Date</dt>
+        <dd>May 2013</dd>
+     </dl>
+    </div>
+  </div>
+
+
+  <div class="offset2">
+    <h2><a href="https://mod.it/ZDuA8f0C">Box2d Car On Infinite Track</a></h2>
+  </div>
+  <div class="row">
+    <div class="span3 offset1">
+      <a href="https://mod.it/ZDuA8f0C"><img src="/images/racer.png"></a>
+    </div>
+    <div class="span6">
+      <dl>
+        <dt>Site</dt>
+        <dd><a href="https://mod.it/ZDuA8f0C">https://mod.it/ZDuA8f0C</a></dd>
+        <dt>Github <i class="icon-github icon-huge"></i></dt>
+        <dd><a href="https://github.com/Myztiq/racer">https://github.com/Myztiq/racer</a></dd>
+        <dt>Description</dt>
+        <dd>
+          This game was built with the intention of learning about Box2D. I had not done any real work with it before this time period and
+          wanted to try it out. I built it using <a href="http://mod.it/" target="_blank">mod.it</a> while helping the developers with some feature
+          enhancements. During the time I built this game I updated their editor to do some better highlighting and on the fly validation. I also
+          added coffeescript support to Mod.it and built a highscore installation tool. While building this game I had quite a bit of fun tuning
+          the cars independed suspension and the physics associated with the vehicle.
+        </dd>
+        <dt>Date</dt>
+        <dd>February 2013</dd>
+      </dl>
+    </div>
+  </div>
+
+
+
+  <div class="offset2">
+    <h2><a href="http://www.ekgrunner.com/">EKG Runner</a></h2>
+  </div>
+  <div class="row">
+    <div class="span3 offset1">
+      <a href="http://www.ekgrunner.com/"><img src="/images/ekgRunner.png"></a>
+    </div>
+    <div class="span6">
+      <dl>
+        <dt>Site</dt>
+        <dd><a href="http://www.ekgrunner.com/">http://www.ekgrunner.com/</a></dd>
+        <dt>Github <i class="icon-github icon-huge"></i></dt>
+        <dd><a href="https://github.com/Myztiq/ekgrunner">https://github.com/Myztiq/ekgrunner</a></dd>
+        <dt>Description</dt>
+        <dd>
+          This game was built during a game jam. The topic of the game jam was the sound of a heartbeat. We ended up brainstorming for a while
+                  and ended up coming up with this idea to build a game where you literally ran through your life, jumping over your hearbeat and
+                  palipitations. Getting harder and hearder as your grew older. I was the only developer on the game, we had an excelent audio guy and our
+                  artist ended up staying at my house that weekend. We had a working demo by noon on Saturday and had plenty of time to tune the game.
+                  The collision detection is done based on image opacity and there are quite a few hacks in place due to the compressed nature of development.
+                  It really only works in chrome.
+        </dd>
+        <dt>Date</dt>
+        <dd>January 2013</dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <div class="offset2">
+     <h2><a href="http://www.inncrisis.org/">InnCrisis</a></h2>
+   </div>
+   <div class="row">
+     <div class="span3 offset1">
+       <a href="http://www.inncrisis.org/"><img src="/images/innCrisis.png"></a>
+     </div>
+     <div class="span6">
+       <dl>
+         <dt>Site</dt>
+         <dd><a href="http://www.inncrisis.org/">http://www.inncrisis.org/</a></dd>
+         <dt>Github <i class="icon-github icon-huge"></i></dt>
+         <dd>https://github.com/InnCrisis/InnCrisis</dd>
+         <dt>Description</dt>
+         <dd>
+           This is probably my most ambitious project. Working with a small army of people our goal is to add a personal touch to donations.
+           <a href="http://www.inncrisis.org/about" target="_blank">Read more</a>
+         </dd>
+         <dt>Date</dt>
+         <dd>November 2012</dd>
+      </dl>
+     </div>
+   </div>
+
+
+  <div class="offset2">
+    <h2><a href="http://thesezombiescansocket.com/">Theses Zombies Can Socket</a></h2>
+  </div>
+  <div class="row">
+    <div class="span3 offset1">
+      <a href="http://thesezombiescansocket.com/"><img src="/images/theseZombiesCanSocket.png"></a>
+    </div>
+    <div class="span6">
+      <dl>
+        <dt>Site</dt>
+        <dd><a href="http://thesezombiescansocket.com/">http://thesezombiescansocket.com/</a></dd>
+        <dt>Bitbucket</dt>
+        <dd>Private Repo (Impact.js) - Request Access</dd>
+        <dt>Description</dt>
+        <dd>
+          I created this game during a Molyjam, the premis being to make a game based on an idea tweeted by Peter Molyneux. Our team
+          decided to tackle this particular tweet: <a href="https://twitter.com/PeterMolydeux/status/137547423303204864">"What if you lived in a world where all the guns are required to be plugged into wall sockets. Now THAT would be a tactical shooter wouldnt it?"</a>.
+          This was a really fun challenge, we had two different audio people and our artist had never made any pixel style art before. I ended up
+          finding a decent A* pathing algorithim to use and the game itself is incredibly challenging.
+        </dd>
+        <dt>Date</dt>
+        <dd>October 2012</dd>
+     </dl>
+    </div>
+  </div>
+
+
+  <div class="offset2">
+    <h2><a href="http://fataldawn.com">Fatal Dawn</a></h2>
+  </div>
+  <div class="row">
+    <div class="span3 offset1">
+      <a href="http://fataldawn.com"><img src="/images/fatalDawn.png"></a>
+    </div>
+    <div class="span6">
+      <dl>
+        <dt>Site</dt>
+        <dd><a href="http://fataldawn.com/">http://fataldawn.com/</a></dd>
+        <dt>Bitbucket</dt>
+        <dd>Private Repo (Impact.js) - Request Access</dd>
+        <dt>Description</dt>
+        <dd>
+          I created this game with a team of people I met during a HTML5 game jam. Its a platformer where the key mechanic is about running around during the night and as the sun
+          rises the game gets easier but you get closer to death. Check it out with the sound on as the audio by
+          <a href="http://soundcloud.com/knotar" target="_blank">Kevin Notar</a> is crucial to the game.
+        </dd>
+        <dt>Date</dt>
+        <dd>February 2012</dd>
+     </dl>
+    </div>
+  </div>
+
+  <div class="offset2">
+    <h2>Glydrs</h2>
+  </div>
+  <div class="row">
+    <div class="span3 offset1">
+      <img src="/images/glydrs.png">
+    </div>
+    <div class="span6">
+      <dl>
+        <dt>Site</dt>
+        <dd>Offline - <i>Sadly, this site is no longer operational as the company that I was working at when this was built no longer exists.</i></dd>
+        <dt>Github <i class="icon-github icon-huge"></i></dt>
+        <dd>Private Repo - I no longer have access</dd>
+        <dt>Description</dt>
+        <dd>
+          A physics based webGL implementation of a skydiving game where the user dives through a youtube video with beat detection and controller/kinect support.
+          Created in a few short weeks for <a href="http://mozillalabs.com/blog/2011/12/webgl-camp-4-revisited/">WebGL Camp</a>
+          where we were flown out to present. A split-screen multiplayer game optimized for firefox.
+        </dd>
+        <dt>Date</dt>
+        <dd>December 2011</dd>
+     </dl>
+    </div>
+  </div>
+
+  <div class="offset2">
+    <h2><a href="/static/onlyCSS">CSS Only Game</a></h2>
+  </div>
+  <div class="row">
+    <div class="span3 offset1">
+      <a href="/static/onlyCSS"><img src="/images/onlyCSS.png"></a>
+    </div>
+    <div class="span6">
+      <dl>
+        <dt>Site</dt>
+        <dd><a href="http://ryan-kahn.com/static/onlyCSS/">http://ryan-kahn.com/static/onlyCSS/</a></dd>
+        <dt>Github <i class="icon-github icon-huge"></i></dt>
+        <dd><a href="https://github.com/Myztiq/rkahn/tree/master/public/static/onlyCSS">https://github.com/Myztiq/rkahn/tree/master/public/static/onlyCSS</a></dd>
+        <dt>Description</dt>
+        <dd>This game was built over the course of a few weeks.
+                  This is probably my most famous piece of work, it completely decribes the type of person I am. Someone who lovest taking a new technology and pushing it to a place that it has not been before.
+                  It is a spy hunter esqe game that utilizing only css, there is no javascript on the page (aside from analytics).
+                  There is also only one image used on the page, the image is for the mouse pointer because the browser does not let the user change the mouse pointer to a div.
+        </dd>
+        <dt>Date</dt>
+        <dd>July 2011</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="offset2">
+    <h2><a href="/static/duneRacer/">WebGL Level Editor</a></h2>
+  </div>
+  <div class="row">
+    <div class="span3 offset1">
+      <a href="/static/duneRacer/"><img src="/images/levelEditor.png"></a>
+    </div>
+    <div class="span6">
+      <dl>
+        <dt>Site</dt>
+        <dd><a href="/static/duneRacer/">http://ryan-kahn.com/static/duneRacer/</a></dd>
+        <dt>Github <i class="icon-github icon-huge"></i></dt>
+        <dd>https://github.com/Myztiq/rkahn/tree/master/public/static/duneRacer</dd>
+        <dt>Description</dt>
+        <dd>
+          This was my intro project to working with <a href="https://github.com/mrdoob/three.js/">ThreeJS</a>. It was a fun project to work with but my enjoyment for working with 3D really brought me over to the
+              <a href="https://github.com/cjcliffe/CubicVR.js/">CubicVRJS</a>
+                project where I created
+              glydrs.
+        </dd>
+        <dt>Date</dt>
+        <dd>June 2011</dd>
+     </dl>
+    </div>
+  </div>
+
+
+  <div class="offset2">
+    <h2><a href="/static/threejs/">ThreeJS Playground</a></h2>
+  </div>
+  <div class="row">
+    <div class="span3 offset1">
+      <a href="/static/threejs/"><img src="/images/threeJS.png"></a>
+    </div>
+    <div class="span6">
+      <dl>
+        <dt>Site</dt>
+        <dd><a href="/static/threejs/">http://ryan-kahn.com/static/threejs/</a></dd>
+        <dt>Github <i class="icon-github icon-huge"></i></dt>
+        <dd>https://github.com/Myztiq/rkahn/tree/master/public/static/threejs</dd>
+        <dt>Description</dt>
+        <dd>
+          While I was prototyping a game idea similar to <a href="http://www.miniclip.com/games/coign-of-vantage/en/" target="_blank">Coign of Vantage</a>.
+          I ended up with this fun webGL interactive rendering of a friends picture.
+          I never got around to finishing up this particular project but it was a very challenging first dive into three.js
+        </dd>
+        <dt>Date</dt>
+        <dd>April 2011</dd>
+     </dl>
+    </div>
+  </div>
+
+
+{% endblock %}
