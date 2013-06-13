@@ -19,9 +19,8 @@ app.configure ->
 
   app.use expressCoffee
     path: __dirname + '/public'
-    live: !process.env.PRODUCTION
-    uglify: process.env.PRODUCTION
-
+    live: true
+    uglify: false
 
   bootstrapPath = path.join(__dirname, 'node_modules', 'bootstrap');
 
@@ -48,6 +47,9 @@ app.get '/contact', (req, res)->
 
 app.get '/projects', (req, res)->
   res.render 'projects.html'
+
+app.get '/photos', (req, res)->
+  res.render 'photos.html'
 
 app.use (err, req, res, next)->
   throw err

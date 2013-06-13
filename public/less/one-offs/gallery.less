@@ -1,0 +1,81 @@
+@-webkit-keyframes scaleIn {
+  0% {  opacity: 0;  -webkit-transform: scale(0);}
+  100% {  opacity: 1; -webkit-transform: scale(1); }
+}
+@-webkit-keyframes flyIn {
+  0% { top:-100px; left: -1000px; -webkit-transform: rotate(100deg); }
+  100% {  top: 0px; left: 0px; -webkit-transform: rotate(0deg); }
+}
+@-webkit-keyframes flyIn1 {
+  0% { top:-100px; left: 1000px; -webkit-transform: rotate(-300deg);}
+  100% {  top: 0px; left: 0px; -webkit-transform: rotate(0deg);}
+}
+@-webkit-keyframes flyIn2 {
+  0% { top:-1000px; left: -100px; -webkit-transform: rotate(300deg);}
+  100% {  top: 0px; left: 0px; -webkit-transform: rotate(0deg);}
+}
+@-webkit-keyframes flyIn3 {
+  0% { top:-1100px; left: 100px; -webkit-transform: rotate(-100deg);}
+  100% {  top: 0px; left: 0px; -webkit-transform: rotate(0deg);}
+}
+
+#gallery-container{
+  overflow: hidden;
+  position: relative;
+  padding: 0px 7px;
+  opacity: 1;
+  .transition(opacity .2s);
+  &.fadeOut{
+    opacity: 0;
+  }
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -webkit-justify-content: center;
+  -webkit-align-items: flex-start;
+
+  .gallery,.photo{
+    -webkit-animation: ~"flyIn 1s, scaleIn 1s";
+    &:nth-child(2n){
+      -webkit-animation: ~"flyIn1 1s, scaleIn 1s";
+    }
+    &:nth-child(3n+1){
+      -webkit-animation: ~"flyIn3 1s, scaleIn 1s";
+    }
+    &:nth-child(3n){
+      -webkit-animation: ~"flyIn2 1s, scaleIn 1s";
+    }
+
+    top: 0;
+    left: 0;
+    margin: 7px;
+    position: relative;
+    cursor: pointer;
+    background-color: @backgroundColor;
+    padding: 5px;
+
+    img{
+      display: block;
+    }
+    .caption{
+      text-align: center;
+      color: @white;
+      padding: 5px;
+      display: block;
+    }
+    &:hover{
+      background-color: lighten(@backgroundColor, 10%);
+      opacity: .9;
+    }
+
+  }
+  .photo{
+    height: 200px;
+    img{
+      height: 100%;
+    }
+    .caption{
+      display: none;
+    }
+  }
+}

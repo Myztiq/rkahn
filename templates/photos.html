@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% set pageID = "index" %}
+
+{% block body %}
+  <script src="https://da189i1jfloii.cloudfront.net/js/kinvey-js-0.9.14.min.js"></script>
+  <script src="/javascripts/gallery.js"></script>
+
+
+  <div class="row">
+    <div class="span8 offset2">
+      <h1>Photo Gallery<br><small>My Life In Images</small></h1>
+      <p>
+        Hello! I like to take photos in my spare time (whenever I can find any) and especially love night photography.
+        All these images are being pulled from my <a href="http://www.flickr.com/photos/93987335@N08/sets" target="_blank">flickr</a>
+        gallery. You can even use this as a starter to add your own flickr profile photos to any site you wish! It has a bit of magic
+        in the backend using <a href="http://kinvey.com" target="_blank">Kinvey</a> to make requests without exposing my API Keys to the public.
+      </p>
+    </div>
+  </div>
+<div id="gallery-container">Loading...</div>
+{% endblock %}
