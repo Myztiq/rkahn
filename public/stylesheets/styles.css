@@ -7670,7 +7670,7 @@ body a:hover {
   }
 }
 .flyIn1 0% {
-  top: -100px;
+  top: -500px;
   left: 1000px;
   -webkit-transform: rotate(-300deg);
   -moz-transform: rotate(-300deg);
@@ -7687,7 +7687,7 @@ body a:hover {
 }
 @-webkit-keyframes flyIn1 {
   0% {
-    top: -100px;
+    top: -500px;
     left: 1000px;
     -webkit-transform: rotate(-300deg);
     -moz-transform: rotate(-300deg);
@@ -7705,7 +7705,7 @@ body a:hover {
 }
 @-o-keyframes flyIn1 {
   0% {
-    top: -100px;
+    top: -500px;
     left: 1000px;
     -webkit-transform: rotate(-300deg);
     -moz-transform: rotate(-300deg);
@@ -7723,7 +7723,7 @@ body a:hover {
 }
 @keyframes flyIn1 {
   0% {
-    top: -100px;
+    top: -500px;
     left: 1000px;
     -webkit-transform: rotate(-300deg);
     -moz-transform: rotate(-300deg);
@@ -7741,7 +7741,7 @@ body a:hover {
 }
 .flyIn2 0% {
   top: -1000px;
-  left: -100px;
+  left: -500px;
   -webkit-transform: rotate(300deg);
   -moz-transform: rotate(300deg);
   -ms-transform: rotate(300deg);
@@ -7758,7 +7758,7 @@ body a:hover {
 @-webkit-keyframes flyIn2 {
   0% {
     top: -1000px;
-    left: -100px;
+    left: -500px;
     -webkit-transform: rotate(300deg);
     -moz-transform: rotate(300deg);
     -ms-transform: rotate(300deg);
@@ -7776,7 +7776,7 @@ body a:hover {
 @-o-keyframes flyIn2 {
   0% {
     top: -1000px;
-    left: -100px;
+    left: -500px;
     -webkit-transform: rotate(300deg);
     -moz-transform: rotate(300deg);
     -ms-transform: rotate(300deg);
@@ -7794,7 +7794,7 @@ body a:hover {
 @keyframes flyIn2 {
   0% {
     top: -1000px;
-    left: -100px;
+    left: -500px;
     -webkit-transform: rotate(300deg);
     -moz-transform: rotate(300deg);
     -ms-transform: rotate(300deg);
@@ -7811,7 +7811,7 @@ body a:hover {
 }
 .flyIn3 0% {
   top: -1100px;
-  left: 100px;
+  left: 500px;
   -webkit-transform: rotate(-100deg);
   -moz-transform: rotate(-100deg);
   -ms-transform: rotate(-100deg);
@@ -7828,7 +7828,7 @@ body a:hover {
 @-webkit-keyframes flyIn3 {
   0% {
     top: -1100px;
-    left: 100px;
+    left: 500px;
     -webkit-transform: rotate(-100deg);
     -moz-transform: rotate(-100deg);
     -ms-transform: rotate(-100deg);
@@ -7846,7 +7846,7 @@ body a:hover {
 @-o-keyframes flyIn3 {
   0% {
     top: -1100px;
-    left: 100px;
+    left: 500px;
     -webkit-transform: rotate(-100deg);
     -moz-transform: rotate(-100deg);
     -ms-transform: rotate(-100deg);
@@ -7864,7 +7864,7 @@ body a:hover {
 @keyframes flyIn3 {
   0% {
     top: -1100px;
-    left: 100px;
+    left: 500px;
     -webkit-transform: rotate(-100deg);
     -moz-transform: rotate(-100deg);
     -ms-transform: rotate(-100deg);
