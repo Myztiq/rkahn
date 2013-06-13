@@ -176,33 +176,6 @@ textarea {
     page-break-after: avoid;
   }
 }
-.clearfix {
-  *zoom: 1;
-}
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: "";
-  line-height: 0;
-}
-.clearfix:after {
-  clear: both;
-}
-.hide-text {
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
-}
-.input-block-level {
-  display: block;
-  width: 100%;
-  min-height: 30px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -6247,6 +6220,33 @@ a.badge:focus {
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 @-ms-viewport {
   width: device-width;
 }
@@ -7337,12 +7337,12 @@ body {
   background-color: #404040;
   margin: 0;
   padding: 0;
-  background-image: -webkit-gradient(linear, left bottom, right top, color-stop(0, #404040), color-stop(0.25, #404040), color-stop(0.25, #3b3b3b), color-stop(0.5, #3b3b3b), color-stop(0.5, #404040), color-stop(0.75, #404040), color-stop(0.75, #3b3b3b), color-stop(1, #3b3b3b));
-  -webkit-background-size: 10px 10px;
+  background-image: linear-gradient(45deg, #404040 0%, #404040 25%, #3b3b3b 25%, #3b3b3b 50%, #404040 50%, #404040 75%, #3b3b3b 75%, #3b3b3b 100%);
+  background-size: 10px 10px;
 }
 body .background {
-  background-image: -webkit-gradient(linear, left top, right top, color-stop(0.34, #8d8d8d), color-stop(0.34, #c0c0c0), color-stop(0.67, #c0c0c0), color-stop(0.67, #5a5a5a), color-stop(1, #5a5a5a));
-  -webkit-background-size: 700px 2000px;
+  background-image: linear-gradient(90deg, #404040 0%, #404040 34%, #c0c0c0 34%, #c0c0c0 67%, #5a5a5a 67%, #5a5a5a 100%);
+  background-size: 500px 100%;
   position: absolute;
   top: 0;
   width: 100%;
@@ -7384,6 +7384,25 @@ body a:hover {
   text-align: center;
   padding-top: 5px;
 }
+#index .pictures {
+  padding-top: 25px;
+  text-align: center;
+}
+#index .pictures a {
+  -moz-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+#index .pictures a:hover {
+  opacity: .7;
+}
+.slideIn 0% {
+  top: -200px;
+}
+.slideIn 80% {
+  top: 0px;
+}
 @-webkit-keyframes slideIn {
   0% {
     top: -200px;
@@ -7391,6 +7410,31 @@ body a:hover {
   80% {
     top: 0px;
   }
+}
+@-o-keyframes slideIn {
+  0% {
+    top: -200px;
+  }
+  80% {
+    top: 0px;
+  }
+}
+@keyframes slideIn {
+  0% {
+    top: -200px;
+  }
+  80% {
+    top: 0px;
+  }
+}
+.pullDown 0% {
+  padding-top: 10px;
+}
+.pullDown 60% {
+  padding-top: 25px;
+}
+.pullDown 100% {
+  padding-top: 10px;
 }
 @-webkit-keyframes pullDown {
   0% {
@@ -7403,7 +7447,60 @@ body a:hover {
     padding-top: 10px;
   }
 }
+@-o-keyframes pullDown {
+  0% {
+    padding-top: 10px;
+  }
+  60% {
+    padding-top: 25px;
+  }
+  100% {
+    padding-top: 10px;
+  }
+}
+@keyframes pullDown {
+  0% {
+    padding-top: 10px;
+  }
+  60% {
+    padding-top: 25px;
+  }
+  100% {
+    padding-top: 10px;
+  }
+}
+.bounce 0% {
+  padding-top: 10px;
+}
+.bounce 60% {
+  padding-top: 15px;
+}
+.bounce 100% {
+  padding-top: 10px;
+}
 @-webkit-keyframes bounce {
+  0% {
+    padding-top: 10px;
+  }
+  60% {
+    padding-top: 15px;
+  }
+  100% {
+    padding-top: 10px;
+  }
+}
+@-o-keyframes bounce {
+  0% {
+    padding-top: 10px;
+  }
+  60% {
+    padding-top: 15px;
+  }
+  100% {
+    padding-top: 10px;
+  }
+}
+@keyframes bounce {
   0% {
     padding-top: 10px;
   }
@@ -7439,9 +7536,9 @@ body a:hover {
   width: calc(100% - 200px);
   overflow: hidden;
   -webkit-animation: slideIn 1s 0s;
+  animation: slideIn 1s 0s;
 }
 .navigation nav ul {
-  -webkit-animation: pullDown .7s 0s;
   padding-top: 10px;
   width: calc(33% - 20px);
   margin: 0px 10px 40px 10px;
@@ -7515,7 +7612,8 @@ body a:hover {
 .navigation nav ul:hover {
   opacity: 1;
   max-height: 500px;
-  -webkit-animation: bounce .7s .1s;
+  -webkit-animation: bounce 0.7s 0.1s;
+  animation: bounce 0.7s 0.1s;
 }
 .navigation nav ul:hover li {
   opacity: 1;
@@ -7523,19 +7621,6 @@ body a:hover {
   -o-transition: opacity 0.2s 0.2s;
   -webkit-transition: opacity 0.2s 0.2s;
   transition: opacity 0.2s 0.2s;
-}
-#index .pictures {
-  padding-top: 25px;
-  text-align: center;
-}
-#index .pictures a {
-  -moz-transition: opacity 0.2s;
-  -o-transition: opacity 0.2s;
-  -webkit-transition: opacity 0.2s;
-  transition: opacity 0.2s;
-}
-#index .pictures a:hover {
-  opacity: .7;
 }
 .scaleIn 0% {
   opacity: 0;
