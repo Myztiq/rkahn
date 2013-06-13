@@ -23,9 +23,10 @@ app.configure ->
     uglify: false
 
   bootstrapPath = path.join(__dirname, 'node_modules', 'bootstrap');
+  l3Path = path.join(__dirname, 'node_modules', 'l3');
 
   app.use less
-    paths: [path.join(bootstrapPath, 'less')]
+    paths: [path.join(bootstrapPath, 'less'), path.join(l3Path, 'less')]
     src: path.join __dirname, 'public/less'
     once: false
     prefix : '/stylesheets'

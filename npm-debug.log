@@ -1,0 +1,143 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/myztiq/nvm/v0.8.18/bin/node',
+1 verbose cli   '/Users/myztiq/nvm/v0.8.18/bin/npm',
+1 verbose cli   'install' ]
+2 info using npm@1.2.2
+3 info using node@v0.8.18
+4 verbose read json /Users/myztiq/Projects/rkahn/package.json
+5 verbose readDependencies using package.json deps
+6 verbose install where, deps [ '/Users/myztiq/Projects/rkahn',
+6 verbose install   [ 'express',
+6 verbose install     'coffee-script',
+6 verbose install     'express-coffee',
+6 verbose install     'less-middleware',
+6 verbose install     'bootstrap',
+6 verbose install     '3l',
+6 verbose install     'nunjucks' ] ]
+7 verbose from cache /Users/myztiq/Projects/rkahn/package.json
+8 info preinstall ryan-kahn.com@0.0.1
+9 verbose read json /Users/myztiq/Projects/rkahn/node_modules/bootstrap/package.json
+10 verbose read json /Users/myztiq/Projects/rkahn/node_modules/coffee-script/package.json
+11 verbose read json /Users/myztiq/Projects/rkahn/node_modules/express/package.json
+12 verbose read json /Users/myztiq/Projects/rkahn/node_modules/express-coffee/package.json
+13 verbose read json /Users/myztiq/Projects/rkahn/node_modules/less-middleware/package.json
+14 verbose read json /Users/myztiq/Projects/rkahn/node_modules/nunjucks/package.json
+15 verbose from cache /Users/myztiq/Projects/rkahn/package.json
+16 verbose readDependencies using package.json deps
+17 verbose read json /Users/myztiq/Projects/rkahn/node_modules/.bin/package.json
+18 verbose from cache /Users/myztiq/Projects/rkahn/node_modules/bootstrap/package.json
+19 verbose from cache /Users/myztiq/Projects/rkahn/node_modules/coffee-script/package.json
+20 verbose from cache /Users/myztiq/Projects/rkahn/node_modules/express/package.json
+21 verbose from cache /Users/myztiq/Projects/rkahn/node_modules/express-coffee/package.json
+22 verbose from cache /Users/myztiq/Projects/rkahn/node_modules/less-middleware/package.json
+23 verbose from cache /Users/myztiq/Projects/rkahn/node_modules/nunjucks/package.json
+24 verbose cache add [ 'bootstrap@git+https://github.com/twitter/bootstrap.git#v2.3.2',
+24 verbose cache add   null ]
+25 verbose cache add name=undefined spec="bootstrap@git+https://github.com/twitter/bootstrap.git#v2.3.2" args=["bootstrap@git+https://github.com/twitter/bootstrap.git#v2.3.2",null]
+26 verbose parsed url { hash: '#v2.3.2',
+26 verbose parsed url   pathname: 'bootstrap@git+https://github.com/twitter/bootstrap.git',
+26 verbose parsed url   path: 'bootstrap@git+https://github.com/twitter/bootstrap.git',
+26 verbose parsed url   href: 'bootstrap@git+https://github.com/twitter/bootstrap.git#v2.3.2' }
+27 verbose cache add name="bootstrap" spec="git+https://github.com/twitter/bootstrap.git#v2.3.2" args=["bootstrap","git+https://github.com/twitter/bootstrap.git#v2.3.2"]
+28 verbose parsed url { protocol: 'git+https:',
+28 verbose parsed url   slashes: true,
+28 verbose parsed url   host: 'github.com',
+28 verbose parsed url   hostname: 'github.com',
+28 verbose parsed url   href: 'git+https://github.com/twitter/bootstrap.git#v2.3.2',
+28 verbose parsed url   hash: '#v2.3.2',
+28 verbose parsed url   pathname: '/twitter/bootstrap.git',
+28 verbose parsed url   path: '/twitter/bootstrap.git' }
+29 verbose cache add [ '3l@git://github.com/mateuszkocz/3l.git', null ]
+30 verbose cache add name=undefined spec="3l@git://github.com/mateuszkocz/3l.git" args=["3l@git://github.com/mateuszkocz/3l.git",null]
+31 verbose parsed url { pathname: '3l@git://github.com/mateuszkocz/3l.git',
+31 verbose parsed url   path: '3l@git://github.com/mateuszkocz/3l.git',
+31 verbose parsed url   href: '3l@git://github.com/mateuszkocz/3l.git' }
+32 verbose cache add name="3l" spec="git://github.com/mateuszkocz/3l.git" args=["3l","git://github.com/mateuszkocz/3l.git"]
+33 verbose parsed url { protocol: 'git:',
+33 verbose parsed url   slashes: true,
+33 verbose parsed url   host: 'github.com',
+33 verbose parsed url   hostname: 'github.com',
+33 verbose parsed url   href: 'git://github.com/mateuszkocz/3l.git',
+33 verbose parsed url   pathname: '/mateuszkocz/3l.git',
+33 verbose parsed url   path: '/mateuszkocz/3l.git' }
+34 silly lockFile 34c9af4f-com-twitter-bootstrap-git-v2-3-2 git+https://github.com/twitter/bootstrap.git#v2.3.2
+35 verbose lock git+https://github.com/twitter/bootstrap.git#v2.3.2 /Users/myztiq/.npm/34c9af4f-com-twitter-bootstrap-git-v2-3-2.lock
+36 silly lockFile 7beb5631-it-github-com-mateuszkocz-3l-git git://github.com/mateuszkocz/3l.git
+37 verbose lock git://github.com/mateuszkocz/3l.git /Users/myztiq/.npm/7beb5631-it-github-com-mateuszkocz-3l-git.lock
+38 verbose already installed skipping nunjucks@0.1.4 /Users/myztiq/Projects/rkahn
+39 verbose already installed skipping express@3.0.0rc4 /Users/myztiq/Projects/rkahn
+40 verbose already installed skipping express-coffee@0.0.9 /Users/myztiq/Projects/rkahn
+41 verbose already installed skipping coffee-script@1.3.x /Users/myztiq/Projects/rkahn
+42 verbose already installed skipping less-middleware@0.1.x /Users/myztiq/Projects/rkahn
+43 verbose addRemoteGit [ 'https://github.com/twitter/bootstrap.git', 'v2.3.2' ]
+44 silly exec git "config" "--get" "remote.origin.url"
+45 silly git,config,--get,remote.origin.url,/Users/myztiq/.npm/_git-remotes/https-github-com-twitter-bootstrap-git-144f374d spawning
+46 verbose addRemoteGit [ 'git://github.com/mateuszkocz/3l.git', 'master' ]
+47 silly exec git "clone" "--mirror" "git://github.com/mateuszkocz/3l.git" "/Users/myztiq/.npm/_git-remotes/git-github-com-mateuszkocz-3l-git-7beb5631"
+48 silly git,clone,--mirror,git://github.com/mateuszkocz/3l.git,/Users/myztiq/.npm/_git-remotes/git-github-com-mateuszkocz-3l-git-7beb5631, spawning
+49 verbose git remote.origin.url https://github.com/twitter/bootstrap.git
+50 silly exec git "fetch" "-a" "origin"
+51 silly git,fetch,-a,origin,/Users/myztiq/.npm/_git-remotes/https-github-com-twitter-bootstrap-git-144f374d spawning
+52 silly exec git "rev-list" "-n1" "v2.3.2"
+53 silly git,rev-list,-n1,v2.3.2,/Users/myztiq/.npm/_git-remotes/https-github-com-twitter-bootstrap-git-144f374d spawning
+54 verbose git rev-list -n1 v2.3.2 d9b502dfb876c40b0735008bac18049c7ee7b6d2
+55 verbose git clone git://github.com/mateuszkocz/3l.git Cloning into bare repository '/Users/myztiq/.npm/_git-remotes/git-github-com-mateuszkocz-3l-git-7beb5631'...
+56 silly exec git "fetch" "-a" "origin"
+57 silly git,fetch,-a,origin,/Users/myztiq/.npm/_git-remotes/git-github-com-mateuszkocz-3l-git-7beb5631 spawning
+58 silly exec git "rev-list" "-n1" "master"
+59 silly git,rev-list,-n1,master,/Users/myztiq/.npm/_git-remotes/git-github-com-mateuszkocz-3l-git-7beb5631 spawning
+60 verbose git rev-list -n1 master 506f02354620d2787ed94a8bddc4e1f8a145c540
+61 verbose git fetch -a origin (git://github.com/mateuszkocz/3l.git)
+62 verbose tar unpack /var/folders/z0/54y4_vhd0x5494k519cn67340000gn/T/npm-25709/1371159621268-0.28539587068371475/tmp.tgz
+63 silly lockFile cdc9fbc8-1268-0-28539587068371475-package /var/folders/z0/54y4_vhd0x5494k519cn67340000gn/T/npm-25709/1371159621268-0.28539587068371475/package
+64 verbose lock /var/folders/z0/54y4_vhd0x5494k519cn67340000gn/T/npm-25709/1371159621268-0.28539587068371475/package /Users/myztiq/.npm/cdc9fbc8-1268-0-28539587068371475-package.lock
+65 silly gunzTarPerm modes [ '755', '644' ]
+66 silly gunzTarPerm extractEntry
+67 silly gunzTarPerm modified mode [ '', 509, 493 ]
+68 silly gunzTarPerm extractEntry .project
+69 silly gunzTarPerm modified mode [ '.project', 436, 420 ]
+70 silly gunzTarPerm extractEntry 3L/
+71 silly gunzTarPerm modified mode [ '3L/', 509, 493 ]
+72 silly gunzTarPerm extractEntry 3L/3L.less
+73 silly gunzTarPerm modified mode [ '3L/3L.less', 436, 420 ]
+74 silly gunzTarPerm extractEntry 3L/CHANGELOG.md
+75 silly gunzTarPerm modified mode [ '3L/CHANGELOG.md', 436, 420 ]
+76 silly gunzTarPerm extractEntry 3L/LICENCES.md
+77 silly gunzTarPerm modified mode [ '3L/LICENCES.md', 436, 420 ]
+78 silly gunzTarPerm extractEntry 3L/assets/
+79 silly gunzTarPerm modified mode [ '3L/assets/', 509, 493 ]
+80 silly gunzTarPerm extractEntry 3L/assets/animations/
+81 silly gunzTarPerm modified mode [ '3L/assets/animations/', 509, 493 ]
+82 silly gunzTarPerm extractEntry 3L/assets/animations/animation1.less
+83 silly gunzTarPerm modified mode [ '3L/assets/animations/animation1.less', 436, 420 ]
+84 silly gunzTarPerm extractEntry 3L/assets/animations/animation2.less
+85 silly gunzTarPerm modified mode [ '3L/assets/animations/animation2.less', 436, 420 ]
+86 silly gunzTarPerm extractEntry 3L/assets/animations/animation3.less
+87 silly gunzTarPerm modified mode [ '3L/assets/animations/animation3.less', 436, 420 ]
+88 silly gunzTarPerm extractEntry 3L/assets/animations/animation4.less
+89 silly gunzTarPerm modified mode [ '3L/assets/animations/animation4.less', 436, 420 ]
+90 silly gunzTarPerm extractEntry 3L/assets/animations/animation5.less
+91 silly gunzTarPerm modified mode [ '3L/assets/animations/animation5.less', 436, 420 ]
+92 silly gunzTarPerm extractEntry 3L/assets/less.js
+93 silly gunzTarPerm modified mode [ '3L/assets/less.js', 436, 420 ]
+94 silly gunzTarPerm extractEntry README.md
+95 silly gunzTarPerm modified mode [ 'README.md', 436, 420 ]
+96 silly gunzTarPerm extractEntry styles.less
+97 silly gunzTarPerm modified mode [ 'styles.less', 436, 420 ]
+98 verbose read json /var/folders/z0/54y4_vhd0x5494k519cn67340000gn/T/npm-25709/1371159621268-0.28539587068371475/package/package.json
+99 silly lockFile cdc9fbc8-1268-0-28539587068371475-package /var/folders/z0/54y4_vhd0x5494k519cn67340000gn/T/npm-25709/1371159621268-0.28539587068371475/package
+100 silly lockFile 7beb5631-it-github-com-mateuszkocz-3l-git git://github.com/mateuszkocz/3l.git
+101 error Error: ENOENT, open '/var/folders/z0/54y4_vhd0x5494k519cn67340000gn/T/npm-25709/1371159621268-0.28539587068371475/package/package.json'
+102 error If you need help, you may report this log at:
+102 error     <http://github.com/isaacs/npm/issues>
+102 error or email it to:
+102 error     <npm-@googlegroups.com>
+103 error System Darwin 12.3.0
+104 error command "/Users/myztiq/nvm/v0.8.18/bin/node" "/Users/myztiq/nvm/v0.8.18/bin/npm" "install"
+105 error cwd /Users/myztiq/Projects/rkahn
+106 error node -v v0.8.18
+107 error npm -v 1.2.2
+108 error path /var/folders/z0/54y4_vhd0x5494k519cn67340000gn/T/npm-25709/1371159621268-0.28539587068371475/package/package.json
+109 error code ENOENT
+110 error errno 34
+111 verbose exit [ 34, true ]
