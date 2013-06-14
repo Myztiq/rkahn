@@ -8008,6 +8008,10 @@ body a:hover {
 #gallery-container .photo img {
   display: block;
   border: 5px solid #404040;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 #gallery-container .gallery .caption,
 #gallery-container .photo .caption {
@@ -8017,10 +8021,27 @@ body a:hover {
   padding: 5px;
   display: block;
 }
-#gallery-container .gallery:hover,
-#gallery-container .photo:hover {
+#gallery-container .gallery:hover:not(.active),
+#gallery-container .photo:hover:not(.active) {
   background-color: #5a5a5a;
   opacity: .9;
+}
+#gallery-container .gallery:hover:not(.active) img,
+#gallery-container .photo:hover:not(.active) img {
+  -webkit-filter: brightness(3) grayscale(1);
+  -moz-filter: brightness(3) grayscale(1);
+  -ms-filter: brightness(3) grayscale(1);
+  filter: brightness(3) grayscale(1);
+}
+#gallery-container .gallery.active,
+#gallery-container .photo.active {
+  width: calc(100% - 10px);
+  height: auto;
+}
+#gallery-container .gallery.active img,
+#gallery-container .photo.active img {
+  width: calc(100% - 10px);
+  height: auto;
 }
 #gallery-container .photo {
   height: 200px;

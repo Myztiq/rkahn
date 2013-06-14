@@ -22,7 +22,6 @@ getPhotos = (galleryId, cb)->
     error: cb
   })
 
-
 $ ->
 
   $container = $('#gallery-container')
@@ -47,7 +46,7 @@ $ ->
       else
         $('#gallery-container').empty()
         for photo in photos
-          $container.append($("<div data-id='#{photo.id}' class='photo'><img src='#{photo.small}'><span class='caption'>#{photo.title}</span></div>"))
+          $container.append($("<div data-large='#{photo.full}' data-small='#{photo.small}' class='photo'><img src='#{photo.small}'><span class='caption'>#{photo.title}</span></div>"))
         $container.removeClass('fadeOut');
 
   calculateDisplay = ->
@@ -58,3 +57,16 @@ $ ->
   $(window).on 'hashchange', ->
     calculateDisplay()
   calculateDisplay()
+
+
+  $('#gallery-container').on 'click', '.photo', (e)->
+    $current = $(e.currentTarget)
+    $current.toggleClass('active')
+    if $current.is('.active')
+      $current.find('img').attr('src',$current.data('large'))
+    else
+      $current.find('img').attr('src',$current.data('small'))
+
+    $('html, body').animate({
+        scrollTop: $current.offset().top - 100
+    }, 200);
