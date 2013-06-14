@@ -116,7 +116,7 @@
     img{
       display: block;
       border:5px solid @backgroundColor;
-      .transition(all .3s);
+      .transition(all .5s);
     }
     .caption{
       text-align: center;
@@ -132,14 +132,6 @@
         .filter(brightness(3) grayscale(1));
       }
     }
-    &.active{
-      width: ~"calc(100% - 10px)";
-      height: auto;
-      img{
-        width: ~"calc(100% - 10px)";
-        height: auto;
-      }
-    }
 
   }
   .photo{
@@ -149,6 +141,14 @@
     }
     .caption{
       display: none;
+    }
+    &.active{
+      width: 100%;
+      height: auto;
+      img{
+        width: 100%;
+        height: auto;
+      }
     }
   }
 }

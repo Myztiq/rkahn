@@ -67,6 +67,6 @@ $ ->
     else
       $current.find('img').attr('src',$current.data('small'))
 
-    $('html, body').animate({
+    $('html, body').stop(true,true).animate({
         scrollTop: $current.offset().top - 100
-    }, 200);
+    }, 700);
