@@ -134,6 +134,11 @@
     }
 
   }
+  &:not(.no-animate){
+    .fullContainer{
+      .transition(opacity .2s,background .5s);
+    }
+  }
   .photo{
     height: 200px;
     img{
@@ -141,7 +146,6 @@
     }
     .fullContainer{
       opacity: 0;
-      .transition(opacity .2s);
     }
     &:not(.active){
       img{
@@ -170,7 +174,6 @@
         }
       }
       .fullContainer{
-        .transition(background .5s);
         opacity: 1;
         z-index: 100;
         height: 100%;
@@ -183,16 +186,17 @@
         padding: 25px;
         background-color: rgba(0,0,0,.8);
         &:after{
-          content: 'click to dismiss';
+          content: 'click to collapse';
           color: white;
           position: absolute;
-          z-index: 200;
+          z-index: 110;
           text-align: center;
           width: 100%;
           left: 0;
           top: 5px;
         }
         img{
+          .box-sizing(border-box);
           height: auto;
           max-height: 100%;
           max-width: 100%;

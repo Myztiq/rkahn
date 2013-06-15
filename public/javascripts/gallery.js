@@ -33,7 +33,7 @@
   };
 
   $(function() {
-    var $container, calculateDisplay, fillGalleries, fillPhotos;
+    var $container, $galleryContainer, calculateDisplay, fillGalleries, fillPhotos, locked;
     $container = $('#gallery-container');
     $('#gallery-container').on('click', '.gallery', function(e) {
       var id;
@@ -66,7 +66,7 @@
           $('#gallery-container').empty();
           for (_i = 0, _len = photos.length; _i < _len; _i++) {
             photo = photos[_i];
-            $container.append($("<div class='photo'>\n  <div class=\"fullContainer\">\n    <img src='" + photo.full + "' class='full'>\n  </div>\n\n  <img src='" + photo.small + "' class='small'>\n</span>\n</div>"));
+            $container.append($("<div class='photo'>\n  <div class=\"fullContainer\">\n    <img src='" + photo.full + "' class='full'>\n  </div>\n  <img src='" + photo.small + "' class='small'>\n</span>\n</div>"));
           }
           return $container.removeClass('fadeOut');
         }
@@ -84,10 +84,54 @@
       return calculateDisplay();
     });
     calculateDisplay();
-    return $('#gallery-container').on('click', '.photo', function(e) {
+    $galleryContainer = $('#gallery-container');
+    $galleryContainer.on('click', '.photo', function(e) {
       var $current;
       $current = $(e.currentTarget);
+      $galleryContainer.removeClass('no-animate');
       return $current.toggleClass('active');
+    });
+    locked = false;
+    $('body').keyup(function(e) {
+      return locked = false;
+    });
+    return $('body').keydown(function(e) {
+      var $current, arrow, keyCode;
+      keyCode = e.keyCode || e.which;
+      arrow = {
+        left: 37,
+        up: 38,
+        right: 39,
+        down: 40
+      };
+      $current = $('.photo.active');
+      if (keyCode === 27) {
+        $galleryContainer.removeClass('no-animate');
+        $current.removeClass('active');
+      }
+      if (locked) return;
+      if (keyCode === arrow.right) {
+        $galleryContainer.addClass('no-animate');
+        locked = true;
+        $current.removeClass('active');
+        if ($current.next().length) {
+          $current.next().addClass('active');
+        } else {
+          $current.parent().find(":first-child").addClass('active');
+        }
+        e.preventDefault();
+      }
+      if (keyCode === arrow.left) {
+        $galleryContainer.addClass('no-animate');
+        locked = true;
+        $current.removeClass('active');
+        if ($current.prev().length) {
+          $current.prev().addClass('active');
+        } else {
+          $current.parent().find(":last-child").addClass('active');
+        }
+        return e.preventDefault();
+      }
     });
   });
 

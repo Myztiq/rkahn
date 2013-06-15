@@ -51,7 +51,6 @@ $ ->
               <div class="fullContainer">
                 <img src='#{photo.full}' class='full'>
               </div>
-
               <img src='#{photo.small}' class='small'>
             </span>
             </div>
@@ -67,7 +66,47 @@ $ ->
     calculateDisplay()
   calculateDisplay()
 
-
-  $('#gallery-container').on 'click', '.photo', (e)->
+  $galleryContainer = $('#gallery-container')
+  $galleryContainer.on 'click', '.photo', (e)->
     $current = $(e.currentTarget)
+    $galleryContainer.removeClass('no-animate')
     $current.toggleClass('active')
+
+  locked = false
+  $('body').keyup (e)->
+    locked = false
+
+  $('body').keydown (e)->
+    keyCode = e.keyCode or e.which;
+    arrow = {left: 37, up: 38, right: 39, down: 40 };
+    $current = $('.photo.active');
+
+    if keyCode == 27 #Escape
+      $galleryContainer.removeClass('no-animate')
+      $current.removeClass('active');
+
+    if locked
+      return
+
+    if keyCode == arrow.right
+      $galleryContainer.addClass('no-animate')
+      locked = true
+      $current.removeClass('active');
+      if $current.next().length
+        $current.next().addClass('active');
+      else
+        $current.parent().find(":first-child").addClass('active')
+
+      e.preventDefault()
+
+    if keyCode == arrow.left
+      $galleryContainer.addClass('no-animate')
+      locked = true
+      $current.removeClass('active');
+
+      if $current.prev().length
+        $current.prev().addClass('active');
+      else
+        $current.parent().find(":last-child").addClass('active')
+
+      e.preventDefault()
