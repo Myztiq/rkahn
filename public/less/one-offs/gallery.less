@@ -143,7 +143,9 @@
       background-color: lighten(@backgroundColor, 10%);
       opacity: .9;
       img{
-        .filter(brightness(1.2) grayscale(1));
+        @media (min-width: 768px) {
+          .filter(brightness(1.2) grayscale(1));
+        }
       }
     }
 
@@ -188,40 +190,45 @@
         }
       }
       .fullContainer{
-        opacity: 1;
-        z-index: 100;
-        height: 100%;
-        width: 100%;
-        top: 0;
-        left: 0;
-        position: fixed;
-        text-align: center;
-        .box-sizing(border-box);
-        padding: 25px;
-        background-color: rgba(0,0,0,.8);
-        &:before{
-          content: 'click to collapse (\f060, \f061, [esc])';
-          font-family: FontAwesome;
-          color: white;
+        @media (max-width: 767px) {
           position: absolute;
-          z-index: 110;
-          text-align: center;
-          width: 100%;
-          left: 0;
-          top: 5px;
         }
-        &:after{
-          content: '\f110';
-          .animation(spin 2s linear infinite);
-          font-size: 20px;
-          font-family: FontAwesome;
-          color: white;
-          position: absolute;
-          z-index: -1;
-          text-align: center;
+        @media (min-width: 768px) {
+          opacity: 1;
+          z-index: 100;
+          height: 100%;
           width: 100%;
           left: 0;
-          top: 50px;
+          top: 0;
+          position: fixed;
+          text-align: center;
+          .box-sizing(border-box);
+          padding: 25px;
+          background-color: rgba(0,0,0,.8);
+          &:before{
+            content: 'click to collapse (\f060, \f061, [esc])';
+            font-family: FontAwesome;
+            color: white;
+            position: absolute;
+            z-index: 110;
+            text-align: center;
+            width: 100%;
+            left: 0;
+            top: 5px;
+          }
+          &:after{
+            content: '\f110';
+            .animation(spin 2s linear infinite);
+            font-size: 20px;
+            font-family: FontAwesome;
+            color: white;
+            position: absolute;
+            z-index: -1;
+            text-align: center;
+            width: 100%;
+            left: 0;
+            top: 50px;
+          }
         }
         img{
           .box-sizing(border-box);

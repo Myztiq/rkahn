@@ -8150,12 +8150,14 @@ body a:hover {
   background-color: #5a5a5a;
   opacity: .9;
 }
-#gallery-container .gallery:hover:not(.active) img,
-#gallery-container .photo:hover:not(.active) img {
-  -webkit-filter: brightness(1.2) grayscale(1);
-  -moz-filter: brightness(1.2) grayscale(1);
-  -ms-filter: brightness(1.2) grayscale(1);
-  filter: brightness(1.2) grayscale(1);
+@media (min-width: 768px) {
+  #gallery-container .gallery:hover:not(.active) img,
+  #gallery-container .photo:hover:not(.active) img {
+    -webkit-filter: brightness(1.2) grayscale(1);
+    -moz-filter: brightness(1.2) grayscale(1);
+    -ms-filter: brightness(1.2) grayscale(1);
+    filter: brightness(1.2) grayscale(1);
+  }
 }
 #gallery-container:not(.no-animate) .fullContainer {
   -webkit-transition: opacity 0.2s, background 0.5s;
@@ -8188,45 +8190,52 @@ body a:hover {
 #gallery-container .photo.active img.small {
   display: block;
 }
-#gallery-container .photo.active .fullContainer {
-  opacity: 1;
-  z-index: 100;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  position: fixed;
-  text-align: center;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 25px;
-  background-color: rgba(0, 0, 0, 0.8);
+@media (max-width: 767px) {
+  #gallery-container .photo.active .fullContainer {
+    position: absolute;
+  }
 }
-#gallery-container .photo.active .fullContainer:before {
-  content: 'click to collapse (\f060, \f061, [esc])';
-  font-family: FontAwesome;
-  color: white;
-  position: absolute;
-  z-index: 110;
-  text-align: center;
-  width: 100%;
-  left: 0;
-  top: 5px;
-}
-#gallery-container .photo.active .fullContainer:after {
-  content: '\f110';
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
-  font-size: 20px;
-  font-family: FontAwesome;
-  color: white;
-  position: absolute;
-  z-index: -1;
-  text-align: center;
-  width: 100%;
-  left: 0;
-  top: 50px;
+@media (min-width: 768px) {
+  #gallery-container .photo.active .fullContainer {
+    opacity: 1;
+    z-index: 100;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+    text-align: center;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 25px;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  #gallery-container .photo.active .fullContainer:before {
+    content: 'click to collapse (\f060, \f061, [esc])';
+    font-family: FontAwesome;
+    color: white;
+    position: absolute;
+    z-index: 110;
+    text-align: center;
+    width: 100%;
+    left: 0;
+    top: 5px;
+  }
+  #gallery-container .photo.active .fullContainer:after {
+    content: '\f110';
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    font-size: 20px;
+    font-family: FontAwesome;
+    color: white;
+    position: absolute;
+    z-index: -1;
+    text-align: center;
+    width: 100%;
+    left: 0;
+    top: 50px;
+  }
 }
 #gallery-container .photo.active .fullContainer img {
   -moz-box-sizing: border-box;
