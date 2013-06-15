@@ -200,12 +200,13 @@
           border:5px solid transparent;
           img{
             position: relative;
-            left: -5px;
-            top: -5px;
+            left: -10px;
+            top: -10px;
             height: auto;
             width: auto;
             max-width: ~"calc(100% + 10px)";
             max-height: ~"calc(100% + 10px)";
+            border:5px solid darken(@highlightColor, 20%);
           }
         }
         @media (min-width: 768px) {
@@ -230,6 +231,19 @@
             left: 0;
             top: 5px;
           }
+          &:after{
+            content: '\f110';
+            .animation(spin 2s linear infinite);
+            font-size: 20px;
+            font-family: FontAwesome;
+            color: white;
+            position: absolute;
+            z-index: -1;
+            text-align: center;
+            width: 100%;
+            left: 0;
+            top: 50px;
+          }
           img{
             .box-sizing(border-box);
             height: auto;
@@ -241,19 +255,6 @@
             min-width: 100px;
             z-index: 1;
           }
-        }
-        &:after{
-          content: '\f110';
-          .animation(spin 2s linear infinite);
-          font-size: 20px;
-          font-family: FontAwesome;
-          color: white;
-          position: absolute;
-          z-index: -1;
-          text-align: center;
-          width: 100%;
-          left: 0;
-          top: 50px;
         }
       }
     }
