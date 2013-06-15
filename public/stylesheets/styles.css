@@ -8004,8 +8004,8 @@ body a:hover {
   -webkit-animation: flyIn2 .5s, scaleIn .5s;
   animation: flyIn2 .5s, scaleIn .5s;
 }
-#gallery-container .gallery img,
-#gallery-container .photo img {
+#gallery-container .gallery img:not(.full),
+#gallery-container .photo img:not(.full) {
   display: block;
   border: 5px solid #404040;
   -moz-transition: all 0.5s;
@@ -8039,16 +8039,32 @@ body a:hover {
 #gallery-container .photo img {
   height: 100%;
 }
+#gallery-container .photo:not(.active) img.full {
+  display: none;
+  position: absolute;
+}
+#gallery-container .photo:not(.active) img:hover.full {
+  display: block;
+  height: 0px;
+  width: 0px;
+}
 #gallery-container .photo .caption {
   display: none;
 }
 #gallery-container .photo.active {
-  width: 100%;
-  height: auto;
+  position: static;
 }
-#gallery-container .photo.active img {
-  width: 100%;
+#gallery-container .photo.active img.small {
+  display: block;
+}
+#gallery-container .photo.active img.full {
   height: auto;
+  display: block;
+  position: absolute;
+  z-index: 100;
+  left: 50%;
+  margin-left: -50%;
+  width: 100%;
 }
 @supports (display: flex) or (display:-webkit-flex) {
   #gallery-container {

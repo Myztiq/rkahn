@@ -46,7 +46,13 @@ $ ->
       else
         $('#gallery-container').empty()
         for photo in photos
-          $container.append($("<div data-large='#{photo.full}' data-small='#{photo.small}' class='photo'><img src='#{photo.small}'><span class='caption'>#{photo.title}</span></div>"))
+          $container.append $ """
+            <div class='photo'>
+              <img src='#{photo.full}' class='full'>
+              <img src='#{photo.small}' class='small'>
+            </span>
+            </div>
+          """
         $container.removeClass('fadeOut');
 
   calculateDisplay = ->
@@ -62,11 +68,3 @@ $ ->
   $('#gallery-container').on 'click', '.photo', (e)->
     $current = $(e.currentTarget)
     $current.toggleClass('active')
-    if $current.is('.active')
-      $current.find('img').attr('src',$current.data('large'))
-    else
-      $current.find('img').attr('src',$current.data('small'))
-
-    $('html, body').stop(true,true).animate({
-        scrollTop: $current.offset().top - 100
-    }, 700);

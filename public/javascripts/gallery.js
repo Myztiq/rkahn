@@ -66,7 +66,7 @@
           $('#gallery-container').empty();
           for (_i = 0, _len = photos.length; _i < _len; _i++) {
             photo = photos[_i];
-            $container.append($("<div data-large='" + photo.full + "' data-small='" + photo.small + "' class='photo'><img src='" + photo.small + "'><span class='caption'>" + photo.title + "</span></div>"));
+            $container.append($("<div class='photo'>\n  <img src='" + photo.full + "' class='full'>\n  <img src='" + photo.small + "' class='small'>\n</span>\n</div>"));
           }
           return $container.removeClass('fadeOut');
         }
@@ -87,15 +87,7 @@
     return $('#gallery-container').on('click', '.photo', function(e) {
       var $current;
       $current = $(e.currentTarget);
-      $current.toggleClass('active');
-      if ($current.is('.active')) {
-        $current.find('img').attr('src', $current.data('large'));
-      } else {
-        $current.find('img').attr('src', $current.data('small'));
-      }
-      return $('html, body').stop(true, true).animate({
-        scrollTop: $current.offset().top - 100
-      }, 700);
+      return $current.toggleClass('active');
     });
   });
 
