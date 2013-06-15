@@ -48,7 +48,10 @@ $ ->
         for photo in photos
           $container.append $ """
             <div class='photo'>
-              <img src='#{photo.full}' class='full'>
+              <div class="fullContainer">
+                <img src='#{photo.full}' class='full'>
+              </div>
+
               <img src='#{photo.small}' class='small'>
             </span>
             </div>

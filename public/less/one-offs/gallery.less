@@ -129,7 +129,7 @@
       background-color: lighten(@backgroundColor, 10%);
       opacity: .9;
       img{
-        .filter(brightness(3) grayscale(1));
+        .filter(brightness(1.2) grayscale(1));
       }
     }
 
@@ -139,18 +139,22 @@
     img{
       height: 100%;
     }
+    .fullContainer{
+      opacity: 0;
+      .transition(opacity .2s);
+    }
     &:not(.active){
       img{
         &.full{
           display: none;
           position: absolute;
         }
-        &:hover{
-          &.full{
-            display: block;
-            height: 0px;
-            width: 0px;
-          }
+      }
+      &:hover{
+        img.full{
+          display: block;
+          height: 0px;
+          width: 0px;
         }
       }
     }
@@ -164,14 +168,36 @@
         &.small{
           display: block;
         }
-        &.full{
-          height: auto;
-          display: block;
+      }
+      .fullContainer{
+        .transition(background .5s);
+        opacity: 1;
+        z-index: 100;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        position: fixed;
+        text-align: center;
+        .box-sizing(border-box);
+        padding: 25px;
+        background-color: rgba(0,0,0,.8);
+        &:after{
+          content: 'click to dismiss';
+          color: white;
           position: absolute;
-          z-index: 100;
-          left: 50%;
-          margin-left: -50%;
+          z-index: 200;
+          text-align: center;
           width: 100%;
+          left: 0;
+          top: 5px;
+        }
+        img{
+          height: auto;
+          max-height: 100%;
+          max-width: 100%;
+          border: 5px solid white;
+          .border-radius(2px);
         }
       }
     }

@@ -66,7 +66,7 @@
           $('#gallery-container').empty();
           for (_i = 0, _len = photos.length; _i < _len; _i++) {
             photo = photos[_i];
-            $container.append($("<div class='photo'>\n  <img src='" + photo.full + "' class='full'>\n  <img src='" + photo.small + "' class='small'>\n</span>\n</div>"));
+            $container.append($("<div class='photo'>\n  <div class=\"fullContainer\">\n    <img src='" + photo.full + "' class='full'>\n  </div>\n\n  <img src='" + photo.small + "' class='small'>\n</span>\n</div>"));
           }
           return $container.removeClass('fadeOut');
         }
