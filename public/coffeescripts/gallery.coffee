@@ -2,23 +2,34 @@ Kinvey.init
   appKey: 'kid_VTXpJ7436M'
   appSecret: 'a59de242ec4140bcb878d6ef8992af15'
 
+makeLoggedIn = (cb)->
+  if !Kinvey.getCurrentUser()
+    user = new Kinvey.User()
+    user.login 'galleryUser','galleryPassword',
+      success: cb
+      error: cb
+  else
+    cb()
+
 getGalleries = (cb)->
-  Kinvey.execute 'getGalleries', {
-    userId: '93987335@N08'
-  }, {
-    success: (items)->
-      cb null, items
-    error: cb
-  }
+  makeLoggedIn ->
+    Kinvey.execute 'getGalleries', {
+      userId: '93987335@N08'
+    }, {
+      success: (items)->
+        cb null, items
+      error: cb
+    }
 
 getPhotos = (galleryId, cb)->
-  Kinvey.execute 'getPhotos', {
-    photosetId: galleryId
-  }, {
-    success: (items)->
-      cb null, items
-    error: cb
-  }
+  makeLoggedIn ->
+    Kinvey.execute 'getPhotos', {
+      photosetId: galleryId
+    }, {
+      success: (items)->
+        cb null, items
+      error: cb
+    }
 
 $ ->
 

@@ -1,30 +1,47 @@
 (function() {
-  var getGalleries, getPhotos;
+  var getGalleries, getPhotos, makeLoggedIn;
 
   Kinvey.init({
     appKey: 'kid_VTXpJ7436M',
     appSecret: 'a59de242ec4140bcb878d6ef8992af15'
   });
 
+  makeLoggedIn = function(cb) {
+    var user;
+    if (!Kinvey.getCurrentUser()) {
+      user = new Kinvey.User();
+      return user.login('galleryUser', 'galleryPassword', {
+        success: cb,
+        error: cb
+      });
+    } else {
+      return cb();
+    }
+  };
+
   getGalleries = function(cb) {
-    return Kinvey.execute('getGalleries', {
-      userId: '93987335@N08'
-    }, {
-      success: function(items) {
-        return cb(null, items);
-      },
-      error: cb
+    return makeLoggedIn(function() {
+      return Kinvey.execute('getGalleries', {
+        userId: '93987335@N08'
+      }, {
+        success: function(items) {
+          return cb(null, items);
+        },
+        error: cb
+      });
     });
   };
 
   getPhotos = function(galleryId, cb) {
-    return Kinvey.execute('getPhotos', {
-      photosetId: galleryId
-    }, {
-      success: function(items) {
-        return cb(null, items);
-      },
-      error: cb
+    return makeLoggedIn(function() {
+      return Kinvey.execute('getPhotos', {
+        photosetId: galleryId
+      }, {
+        success: function(items) {
+          return cb(null, items);
+        },
+        error: cb
+      });
     });
   };
 
