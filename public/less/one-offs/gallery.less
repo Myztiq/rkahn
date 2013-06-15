@@ -230,19 +230,6 @@
             left: 0;
             top: 5px;
           }
-          &:after{
-            content: '\f110';
-            .animation(spin 2s linear infinite);
-            font-size: 20px;
-            font-family: FontAwesome;
-            color: white;
-            position: absolute;
-            z-index: -1;
-            text-align: center;
-            width: 100%;
-            left: 0;
-            top: 50px;
-          }
           img{
             .box-sizing(border-box);
             height: auto;
@@ -254,6 +241,19 @@
             min-width: 100px;
             z-index: 1;
           }
+        }
+        &:after{
+          content: '\f110';
+          .animation(spin 2s linear infinite);
+          font-size: 20px;
+          font-family: FontAwesome;
+          color: white;
+          position: absolute;
+          z-index: -1;
+          text-align: center;
+          width: 100%;
+          left: 0;
+          top: 50px;
         }
       }
     }

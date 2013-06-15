@@ -8238,20 +8238,6 @@ body a:hover {
     left: 0;
     top: 5px;
   }
-  #gallery-container .photo.active .fullContainer:after {
-    content: '\f110';
-    -webkit-animation: spin 2s linear infinite;
-    animation: spin 2s linear infinite;
-    font-size: 20px;
-    font-family: FontAwesome;
-    color: white;
-    position: absolute;
-    z-index: -1;
-    text-align: center;
-    width: 100%;
-    left: 0;
-    top: 50px;
-  }
   #gallery-container .photo.active .fullContainer img {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -8267,6 +8253,20 @@ body a:hover {
     min-width: 100px;
     z-index: 1;
   }
+}
+#gallery-container .photo.active .fullContainer:after {
+  content: '\f110';
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  font-size: 20px;
+  font-family: FontAwesome;
+  color: white;
+  position: absolute;
+  z-index: -1;
+  text-align: center;
+  width: 100%;
+  left: 0;
+  top: 50px;
 }
 @supports (display: flex) or (display:-webkit-flex) {
   #gallery-container {
