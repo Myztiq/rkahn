@@ -12,6 +12,20 @@
 @-o-keyframes scaleIn {.scaleIn;}
 @keyframes scaleIn {.scaleIn;}
 
+.spin{
+  0% {
+    .transform(~"rotate(0deg) scale(1)");
+  }
+  50%{
+    .transform(~"rotate(180deg) scale(.8)");
+  }
+  100% {
+    .transform(~"rotate(360deg) scale(1)");
+  }
+}
+@-webkit-keyframes spin {.spin;}
+@-o-keyframes spin {.spin;}
+@keyframes spin {.spin;}
 
 
 .flyIn {
@@ -185,7 +199,7 @@
         .box-sizing(border-box);
         padding: 25px;
         background-color: rgba(0,0,0,.8);
-        &:after{
+        &:before{
           content: 'click to collapse (\f060, \f061, [esc])';
           font-family: FontAwesome;
           color: white;
@@ -196,6 +210,19 @@
           left: 0;
           top: 5px;
         }
+        &:after{
+          content: '\f110';
+          .animation(spin 2s linear infinite);
+          font-size: 20px;
+          font-family: FontAwesome;
+          color: white;
+          position: absolute;
+          z-index: -1;
+          text-align: center;
+          width: 100%;
+          left: 0;
+          top: 50px;
+        }
         img{
           .box-sizing(border-box);
           height: auto;
@@ -203,6 +230,9 @@
           max-width: 100%;
           border: 5px solid white;
           .border-radius(2px);
+          min-height: 100px;
+          min-width: 100px;
+          z-index: 1;
         }
       }
     }

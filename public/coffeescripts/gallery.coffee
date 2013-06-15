@@ -85,7 +85,7 @@ $ ->
       $galleryContainer.removeClass('no-animate')
       $current.removeClass('active');
 
-    if locked
+    if locked or $current.length == 0
       return
 
     if keyCode == arrow.right

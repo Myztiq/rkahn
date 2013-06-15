@@ -109,7 +109,7 @@
         $galleryContainer.removeClass('no-animate');
         $current.removeClass('active');
       }
-      if (locked) return;
+      if (locked || $current.length === 0) return;
       if (keyCode === arrow.right) {
         $galleryContainer.addClass('no-animate');
         locked = true;

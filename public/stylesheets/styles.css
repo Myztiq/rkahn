@@ -7684,6 +7684,84 @@ body a:hover {
     transform: scale(1);
   }
 }
+.spin 0% {
+  -webkit-transform: rotate(0deg) scale(1);
+  -moz-transform: rotate(0deg) scale(1);
+  -ms-transform: rotate(0deg) scale(1);
+  transform: rotate(0deg) scale(1);
+}
+.spin 50% {
+  -webkit-transform: rotate(180deg) scale(.8);
+  -moz-transform: rotate(180deg) scale(.8);
+  -ms-transform: rotate(180deg) scale(.8);
+  transform: rotate(180deg) scale(.8);
+}
+.spin 100% {
+  -webkit-transform: rotate(360deg) scale(1);
+  -moz-transform: rotate(360deg) scale(1);
+  -ms-transform: rotate(360deg) scale(1);
+  transform: rotate(360deg) scale(1);
+}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg) scale(1);
+    -moz-transform: rotate(0deg) scale(1);
+    -ms-transform: rotate(0deg) scale(1);
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    -webkit-transform: rotate(180deg) scale(.8);
+    -moz-transform: rotate(180deg) scale(.8);
+    -ms-transform: rotate(180deg) scale(.8);
+    transform: rotate(180deg) scale(.8);
+  }
+  100% {
+    -webkit-transform: rotate(360deg) scale(1);
+    -moz-transform: rotate(360deg) scale(1);
+    -ms-transform: rotate(360deg) scale(1);
+    transform: rotate(360deg) scale(1);
+  }
+}
+@-o-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg) scale(1);
+    -moz-transform: rotate(0deg) scale(1);
+    -ms-transform: rotate(0deg) scale(1);
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    -webkit-transform: rotate(180deg) scale(.8);
+    -moz-transform: rotate(180deg) scale(.8);
+    -ms-transform: rotate(180deg) scale(.8);
+    transform: rotate(180deg) scale(.8);
+  }
+  100% {
+    -webkit-transform: rotate(360deg) scale(1);
+    -moz-transform: rotate(360deg) scale(1);
+    -ms-transform: rotate(360deg) scale(1);
+    transform: rotate(360deg) scale(1);
+  }
+}
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg) scale(1);
+    -moz-transform: rotate(0deg) scale(1);
+    -ms-transform: rotate(0deg) scale(1);
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    -webkit-transform: rotate(180deg) scale(.8);
+    -moz-transform: rotate(180deg) scale(.8);
+    -ms-transform: rotate(180deg) scale(.8);
+    transform: rotate(180deg) scale(.8);
+  }
+  100% {
+    -webkit-transform: rotate(360deg) scale(1);
+    -moz-transform: rotate(360deg) scale(1);
+    -ms-transform: rotate(360deg) scale(1);
+    transform: rotate(360deg) scale(1);
+  }
+}
 .flyIn 0% {
   top: -100px;
   left: -1000px;
@@ -8079,7 +8157,7 @@ body a:hover {
   padding: 25px;
   background-color: rgba(0, 0, 0, 0.8);
 }
-#gallery-container .photo.active .fullContainer:after {
+#gallery-container .photo.active .fullContainer:before {
   content: 'click to collapse (\f060, \f061, [esc])';
   font-family: FontAwesome;
   color: white;
@@ -8089,6 +8167,20 @@ body a:hover {
   width: 100%;
   left: 0;
   top: 5px;
+}
+#gallery-container .photo.active .fullContainer:after {
+  content: '\f110';
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  font-size: 20px;
+  font-family: FontAwesome;
+  color: white;
+  position: absolute;
+  z-index: -1;
+  text-align: center;
+  width: 100%;
+  left: 0;
+  top: 50px;
 }
 #gallery-container .photo.active .fullContainer img {
   -moz-box-sizing: border-box;
@@ -8101,6 +8193,9 @@ body a:hover {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
+  min-height: 100px;
+  min-width: 100px;
+  z-index: 1;
 }
 @supports (display: flex) or (display:-webkit-flex) {
   #gallery-container {
