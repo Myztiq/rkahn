@@ -8080,7 +8080,8 @@ body a:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
 #gallery-container .photo.active .fullContainer:after {
-  content: 'click to collapse';
+  content: 'click to collapse (\f060, \f061, [esc])';
+  font-family: FontAwesome;
   color: white;
   position: absolute;
   z-index: 110;
