@@ -46,6 +46,9 @@ app.get '/', (req, res)->
 app.get '/contact', (req, res)->
   res.render 'contact.html'
 
+app.get '/about', (req, res)->
+  res.render 'contact.html'
+
 app.get '/projects', (req, res)->
   res.render 'projects.html'
 

@@ -47,7 +47,9 @@
     left: 200px;
     width: ~"calc(100% - 200px)";
     overflow: hidden;
-    .animation(slideIn 1s 0s);
+    @media (min-width: 767px) {
+      .animation(slideIn 1s 0s);
+    }
     ul{
       padding-top: 10px;
       width: ~"calc(33% - 20px)";
@@ -57,41 +59,43 @@
       background-color:@headerColor;
       position: relative;
       padding-bottom: 4em;
-      .transition(~"max-height .7s .1s, opacity .2s .1s");
       opacity: .9;
       max-height: 0px;
-      .box-shadow(0px 0px 20px @headerColor);
-      &:before{
-        content: '';
-        position: absolute;
-        background-color: @headerColor;
+      @media (min-width: 767px) {
+        .transition(~"max-height .7s .1s, opacity .2s .1s");
+        .box-shadow(0px 0px 20px @headerColor);
+        &:before{
+          content: '';
+          position: absolute;
+          background-color: @headerColor;
 
-        height: 15px;
-        bottom: -15px;
+          height: 15px;
+          bottom: -15px;
 
-        left: 50%;
-        width: 6px;
-        margin-left: -3px;
+          left: 50%;
+          width: 6px;
+          margin-left: -3px;
 
-      }
-      &:after{
-        content: '';
-        position: absolute;
+        }
+        &:after{
+          content: '';
+          position: absolute;
 
-        border: 2px solid @headerColor;
-        .border-radius(20px);
+          border: 2px solid @headerColor;
+          .border-radius(20px);
 
-        height: 16px;
-        bottom: -33px;
+          height: 16px;
+          bottom: -33px;
 
-        left: 50%;
-        width: 16px;
-        margin-left: -10px;
-
-
+          left: 50%;
+          width: 16px;
+          margin-left: -10px;
+        }
       }
       li{
-        .transition(opacity .2s .1s);
+        @media (min-width: 767px) {
+          .transition(opacity .2s .1s);
+        }
         opacity: 0;
         a{
           padding: 5px 10px;
@@ -116,13 +120,44 @@
         height: 2em;
         opacity: 1;
       }
-      &:hover{
-        opacity: 1;
-        max-height: 500px;
-        .animation(bounce .7s .1s);
-        li{
+      @media (min-width: 767px) {
+        &:hover{
           opacity: 1;
-          .transition(opacity .2s .2s);
+          max-height: 500px;
+          .animation(bounce .7s .1s);
+          li{
+            opacity: 1;
+            .transition(opacity .2s .2s);
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 767px) {
+    border: none;
+    nav{
+      position: relative;
+      left: 0px;
+      width: 100%;
+      font-size: 1.4em;
+      ul{
+        height: auto;
+        padding: 5px 0px;
+        max-height: 1000px;
+        opacity: 1;
+        width: 33.33333%;
+        margin: 0px;
+        li{
+          display: none;
+        }
+        .title{
+          height: auto;
+          display: block;
+          position: relative;
+          a{
+            height: 50px;
+            line-height: 50px;
+          }
         }
       }
     }
