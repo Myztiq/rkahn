@@ -3,24 +3,22 @@ Kinvey.init
   appSecret: 'a59de242ec4140bcb878d6ef8992af15'
 
 getGalleries = (cb)->
-  store = new Kinvey.Store.Rpc()
-  url = store._getUrl ['custom', 'getGalleries']
-  url += "&userId=93987335@N08"
-  store._send('post',url,null,{
+  Kinvey.execute 'getGalleries', {
+    userId: '93987335@N08'
+  }, {
     success: (items)->
       cb null, items
     error: cb
-  })
+  }
 
 getPhotos = (galleryId, cb)->
-  store = new Kinvey.Store.Rpc()
-  url = store._getUrl ['custom', 'getPhotos']
-  url += "&photosetId=#{galleryId}"
-  store._send('post',url,null,{
+  Kinvey.execute 'getPhotos', {
+    photosetId: galleryId
+  }, {
     success: (items)->
       cb null, items
     error: cb
-  })
+  }
 
 $ ->
 

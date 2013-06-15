@@ -7,11 +7,9 @@
   });
 
   getGalleries = function(cb) {
-    var store, url;
-    store = new Kinvey.Store.Rpc();
-    url = store._getUrl(['custom', 'getGalleries']);
-    url += "&userId=93987335@N08";
-    return store._send('post', url, null, {
+    return Kinvey.execute('getGalleries', {
+      userId: '93987335@N08'
+    }, {
       success: function(items) {
         return cb(null, items);
       },
@@ -20,11 +18,9 @@
   };
 
   getPhotos = function(galleryId, cb) {
-    var store, url;
-    store = new Kinvey.Store.Rpc();
-    url = store._getUrl(['custom', 'getPhotos']);
-    url += "&photosetId=" + galleryId;
-    return store._send('post', url, null, {
+    return Kinvey.execute('getPhotos', {
+      photosetId: galleryId
+    }, {
       success: function(items) {
         return cb(null, items);
       },

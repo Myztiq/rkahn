@@ -25,7 +25,7 @@
 
   /**
    * Top-level namespace. Exported for browser and CommonJS.
-   *
+   * 
    * @name Kinvey
    * @namespace
    */
@@ -114,7 +114,7 @@
   var Xhr = (function() {
     /**
      * Base 64 encodes string.
-     *
+     * 
      * @private
      * @param {string} value
      * @return {string} Encoded string.
@@ -125,7 +125,7 @@
 
     /**
      * Returns authorization string.
-     *
+     * 
      * @private
      * @param {boolean} forceAppc Force use of application credentials.
      * @return {Object} Authorization.
@@ -135,7 +135,7 @@
       if(null != Kinvey.masterSecret) {// undefined or null
         return 'Basic ' + this._base64(Kinvey.appKey + ':' + Kinvey.masterSecret);
       }
-
+  
       // Use Session Auth if there is a current user, and application credentials
       // are not forced.
       var user = Kinvey.getCurrentUser();
@@ -149,7 +149,7 @@
 
     /**
      * Returns device information.
-     *
+     * 
      * @private
      * @return {string} Device information.
      */
@@ -166,9 +166,9 @@
       var browser = rChrome.exec(ua) || rSafari.exec(ua) || rFirefox.exec(ua) || rOpera.exec(ua) || rIE.exec(ua) || [ ];
 
       // Build device information.
-      // Example: "js/0.9.14 linux-chrome 18 0".
+      // Example: "js/0.9.15 linux-chrome 18 0".
       return [
-        (window.cordova ? 'js-phonegap' : 'js') + '/0.9.14',
+        (window.cordova ? 'js-phonegap' : 'js') + '/0.9.15',
         navigator.platform + '-' + (browser[1] || navigator.appName),
         browser[2] || 0,
         0 // always set device ID to 0.
@@ -179,7 +179,7 @@
 
     /**
      * Sends a request against Kinvey.
-     *
+     * 
      * @private
      * @param {string} method Request method.
      * @param {string} url Request URL.
@@ -259,7 +259,7 @@
 
     /**
      * Sends a request.
-     *
+     * 
      * @private
      * @param {string} method Request method.
      * @param {string} url Request URL.
@@ -276,7 +276,7 @@
       'undefined' !== typeof options.timeout || (options.timeout = this.options.timeout);
       options.success || (options.success = this.options.success);
       options.error || (options.error = this.options.error);
-
+      
       // Create request.
       var request = new XMLHttpRequest();
       request.open(method, url);
@@ -337,28 +337,28 @@
 
   /**
    * API version.
-   *
+   * 
    * @constant
    */
   Kinvey.API_VERSION = 2;
 
   /**
    * Host.
-   *
+   * 
    * @constant
    */
   Kinvey.HOST = 'https://baas.kinvey.com';
 
   /**
    * SDK version.
-   *
+   * 
    * @constant
    */
-  Kinvey.SDK_VERSION = '0.9.14';
+  Kinvey.SDK_VERSION = '0.9.15';
 
   /**
    * Returns current user, or null if not set.
-   *
+   * 
    * @return {Kinvey.User} Current user.
    */
   Kinvey.getCurrentUser = function() {
@@ -368,14 +368,14 @@
   /**
    * Initializes library for use with Kinvey services. Never use the master
    * secret in client-side code.
-   *
+   * 
    * @example <code>
    * Kinvey.init({
    *   appKey: 'your-app-key',
    *   appSecret: 'your-app-secret'
    * });
    * </code>
-   *
+   * 
    * @param {Object} options Kinvey credentials. Object expects properties:
    *          "appKey", and "appSecret" or "masterSecret". Optional: "sync".
    * @throws {Error}
@@ -407,7 +407,7 @@
 
   /**
    * Round trips a request to the server and back, helps ensure connectivity.
-   *
+   * 
    * @example <code>
    * Kinvey.ping({
    *   success: function(response) {
@@ -418,7 +418,7 @@
    *   }
    * });
    * </code>
-   *
+   * 
    * @param {Object} [options]
    * @param {function(response, info)} [options.success] Success callback.
    * @param {function(error, info)} [options.error] Failure callback.
@@ -431,7 +431,7 @@
   /**
    * Sets the current user. This method is only used by the Kinvey.User
    * namespace.
-   *
+   * 
    * @private
    * @param {Kinvey.User} user Current user.
    */
@@ -441,7 +441,7 @@
 
   /**
    * Kinvey Error namespace definition. Holds all possible errors.
-   *
+   * 
    * @namespace
    */
   Kinvey.Error = {
@@ -575,12 +575,12 @@
 
     /**
      * Creates a new entity.
-     *
+     * 
      * @example <code>
      * var entity = new Kinvey.Entity({}, 'my-collection');
      * var entity = new Kinvey.Entity({ key: 'value' }, 'my-collection');
      * </code>
-     *
+     * 
      * @name Kinvey.Entity
      * @constructor
      * @param {Object} [attr] Attribute object.
@@ -609,7 +609,7 @@
 
     /**
      * Destroys entity.
-     *
+     * 
      * @param {Object} [options]
      * @param {function(entity, info)} [options.success] Success callback.
      * @param {function(error, info)} [options.error] Failure callback.
@@ -625,7 +625,7 @@
 
     /**
      * Returns attribute, or null if not set.
-     *
+     * 
      * @param {string} key Attribute key.
      * @throws {Error} On empty key.
      * @return {*} Attribute.
@@ -642,7 +642,7 @@
 
     /**
      * Returns id or null if not set.
-     *
+     * 
      * @return {string} id
      */
     getId: function() {
@@ -651,7 +651,7 @@
 
     /**
      * Returns metadata.
-     *
+     * 
      * @return {Kinvey.Metadata} Metadata.
      */
     getMetadata: function() {
@@ -662,7 +662,7 @@
 
     /**
      * Returns whether entity is persisted.
-     *
+     * 
      * @return {boolean}
      */
     isNew: function() {
@@ -671,7 +671,7 @@
 
     /**
      * Loads entity by id.
-     *
+     * 
      * @param {string} id Entity id.
      * @param {Object} [options]
      * @param {function(entity, info)} [options.success] Success callback.
@@ -699,7 +699,7 @@
 
     /**
      * Saves entity.
-     *
+     * 
      * @param {Object} [options]
      * @param {function(entity, info)} [options.success] Success callback.
      * @param {function(error, info)} [options.error] Failure callback.
@@ -746,7 +746,7 @@
 
     /**
      * Sets attribute.
-     *
+     * 
      * @param {string} key Attribute key.
      * @param {*} value Attribute value.
      * @throws {Error} On empty key.
@@ -760,7 +760,7 @@
 
     /**
      * Sets id.
-     *
+     * 
      * @param {string} id Id.
      * @throws {Error} On empty id.
      */
@@ -773,7 +773,7 @@
 
     /**
      * Sets metadata.
-     *
+     * 
      * @param {Kinvey.Metadata} metadata Metadata object.
      * @throws {Error} On invalid instance.
      */
@@ -786,7 +786,7 @@
 
     /**
      * Returns JSON representation. Used by JSON#stringify.
-     *
+     * 
      * @param {boolean} [doNotFlatten] If false, returns entity using reference syntax.
      * @returns {Object} JSON representation.
      */
@@ -809,7 +809,7 @@
 
     /**
      * Removes attribute.
-     *
+     * 
      * @param {string} key Attribute key.
      */
     unset: function(key) {
@@ -818,7 +818,7 @@
 
     /**
      * Saves references.
-     *
+     * 
      * @private
      * @param {Object} options
      * @param {function(outAttr)} options.success Success callback.
@@ -990,7 +990,7 @@
                 // reference is a attribute of the currently found reference.
                 if(segments[0] || doc[field]._obj) {
                   // The actual object may not be embedded, so we need to set
-                  // the object id explicitly (otherwise, save() will fail).
+                  // the object id explicitly (otherwise, save() will fail). 
                   var id = doc[field]._id;
                   doc[field] = new ClassDef(doc[field]._obj, doc[field]._collection, options);
                   doc[field].setId(id);
@@ -1043,11 +1043,11 @@
 
     /**
      * Creates new collection.
-     *
+     * 
      * @example <code>
      * var collection = new Kinvey.Collection('my-collection');
      * </code>
-     *
+     * 
      * @constructor
      * @name Kinvey.Collection
      * @param {string} name Collection name.
@@ -1074,7 +1074,7 @@
 
     /**
      * Aggregates entities in collection.
-     *
+     * 
      * @param {Kinvey.Aggregation} aggregation Aggregation object.
      * @param {Object} [options]
      * @param {function(aggregation, info)} [options.success] Success callback.
@@ -1090,7 +1090,7 @@
 
     /**
      * Clears collection.
-     *
+     * 
      * @param {Object} [options]
      * @param {function(info)} [success] Success callback.
      * @param {function(error, info)} [error] Failure callback.
@@ -1107,7 +1107,7 @@
 
     /**
      * Counts number of entities.
-     *
+     * 
      * @example <code>
      * var collection = new Kinvey.Collection('my-collection');
      * collection.count({
@@ -1119,7 +1119,7 @@
      *   }
      * });
      * </code>
-     *
+     * 
      * @param {Object} [options]
      * @param {function(count, info)} [success] Success callback.
      * @param {function(error, info)} [error] Failure callback.
@@ -1145,7 +1145,7 @@
 
     /**
      * Fetches entities in collection.
-     *
+     * 
      * @param {Object} [options]
      * @param {function(list, info)} [options.success] Success callback.
      * @param {function(error, info)} [options.error] Failure callback.
@@ -1172,7 +1172,7 @@
 
     /**
      * Sets query.
-     *
+     * 
      * @param {Kinvey.Query} [query] Query.
      * @throws {Error} On invalid instance.
      */
@@ -1185,7 +1185,7 @@
 
     /**
      * Returns JSON representation. Used by JSON#stringify.
-     *
+     * 
      * @returns {Array} JSON representation.
      */
     toJSON: function() {
@@ -1213,12 +1213,12 @@
 
     /**
      * Creates a new user.
-     *
+     * 
      * @example <code>
      * var user = new Kinvey.User();
      * var user = new Kinvey.User({ key: 'value' });
      * </code>
-     *
+     * 
      * @name Kinvey.User
      * @constructor
      * @extends Kinvey.Entity
@@ -1232,7 +1232,7 @@
 
     /**
      * Destroys user. Use with caution.
-     *
+     * 
      * @override
      * @see Kinvey.Entity#destroy
      */
@@ -1251,7 +1251,7 @@
 
     /**
      * Returns social identity, or null if not set.
-     *
+     * 
      * @return {Object} Identity.
      */
     getIdentity: function() {
@@ -1260,7 +1260,7 @@
 
     /**
      * Returns token, or null if not set.
-     *
+     * 
      * @return {string} Token.
      */
     getToken: function() {
@@ -1269,7 +1269,7 @@
 
     /**
      * Returns username, or null if not set.
-     *
+     * 
      * @return {string} Username.
      */
     getUsername: function() {
@@ -1278,7 +1278,7 @@
 
     /**
      * Returns whether the user email address was verified.
-     *
+     * 
      * @return {boolean}
      */
     isVerified: function() {
@@ -1292,8 +1292,8 @@
 
     /**
      * Logs in user.
-     *
-     * @example <code>
+     * 
+     * @example <code> 
      * var user = new Kinvey.User();
      * user.login('username', 'password', {
      *   success: function() {
@@ -1304,7 +1304,7 @@
      *   }
      * });
      * </code>
-     *
+     * 
      * @param {string} username Username.
      * @param {string} password Password.
      * @param {Object} [options]
@@ -1320,7 +1320,7 @@
 
     /**
      * Logs in user given a Facebook OAuth 2.0 token.
-     *
+     * 
      * @param {Object} tokens
      * @param {string} access_token OAuth access token.
      * @param {integer} expires_in Expiration interval.
@@ -1346,7 +1346,7 @@
 
     /**
      * Logs in user given a Google+ OAuth 2.0 token.
-     *
+     * 
      * @param {Object} tokens
      * @param {string} access_token OAuth access token.
      * @param {integer} expires_in Expiration interval.
@@ -1372,7 +1372,7 @@
 
     /**
      * Logs in user given a LinkedIn OAuth 1.0a token.
-     *
+     * 
      * @param {Object} tokens
      * @param {string} tokens.access_token OAuth access token.
      * @param {string} tokens.access_token_secret OAuth access token secret.
@@ -1402,7 +1402,7 @@
 
     /**
      * Logs in user given a Twitter OAuth 1.0a token.
-     *
+     * 
      * @param {Object} tokens
      * @param {string} tokens.access_token OAuth access token.
      * @param {string} tokens.access_token_secret OAuth access token secret.
@@ -1432,7 +1432,7 @@
 
     /**
      * Logs out user.
-     *
+     * 
      * @param {Object} [options] Options.
      * @param {function(info)} [options.success] Success callback.
      * @param {function(error, info)} [options.error] Failure callback.
@@ -1455,7 +1455,7 @@
 
     /**
      * Purges social identity for provider.
-     *
+     * 
      * @param {string} provider Provider.
      */
     purgeIdentity: function(provider) {
@@ -1467,7 +1467,7 @@
 
     /**
      * Saves a user.
-     *
+     * 
      * @override
      * @see Kinvey.Entity#save
      */
@@ -1497,7 +1497,7 @@
 
     /**
      * Sets a new password.
-     *
+     * 
      * @param {string} password New password.
      */
     setPassword: function(password) {
@@ -1506,7 +1506,7 @@
 
     /**
      * Removes any user saved on disk.
-     *
+     * 
      * @private
      */
     _deleteFromDisk: function() {
@@ -1515,7 +1515,7 @@
 
     /**
      * Performs login.
-     *
+     * 
      * @private
      * @param {Object} attr Attributes.
      * @param {Object} options Options.
@@ -1551,7 +1551,7 @@
     /**
      * Marks user as logged in. This method should never be called standalone,
      * but always involve some network request.
-     *
+     * 
      * @private
      * @param {string} token Token.
      */
@@ -1567,7 +1567,7 @@
 
     /**
      * Logs in or create user with a given identity.
-     *
+     * 
      * @private
      * @param {Object} [attr] User attributes.
      * @param {Object} [options]
@@ -1592,7 +1592,7 @@
 
     /**
      * Marks user no longer as logged in.
-     *
+     * 
      * @private
      */
     _logout: function() {
@@ -1607,7 +1607,7 @@
 
     /**
      * Saves current user to disk.
-     *
+     * 
      * @private
      */
     _saveToDisk: function() {
@@ -1623,7 +1623,7 @@
 
     /**
      * Creates the current user.
-     *
+     * 
      * @example <code>
      * Kinvey.User.create({
      *   username: 'username'
@@ -1636,7 +1636,7 @@
      *   }
      * });
      * </code>
-     *
+     * 
      * @param {Object} attr Attributes.
      * @param {Object} [options]
      * @param {function(user)} [options.success] Success callback.
@@ -1669,7 +1669,7 @@
             var token = this.attr._kmd.authtoken;
             delete this.attr._kmd.authtoken;
             this._login(token);
-
+  
             options.success && options.success(this, info);
           })
         }));
@@ -1683,7 +1683,7 @@
      * Initializes a current user. Returns the current user, otherwise creates
      * an implicit user. This method is called internally when doing a network
      * request. Manually invoking this function is however allowed.
-     *
+     * 
      * @param {Object} [options]
      * @param {function(user)} [options.success] Success callback.
      * @param {function(error)} [options.error] Failure callback.
@@ -1705,7 +1705,7 @@
 
     /**
      * Resets password for a user.
-     *
+     * 
      * @param {string} username User name.
      * @param {Object} [options]
      * @param {function()} [options.success] Success callback.
@@ -1718,7 +1718,7 @@
 
     /**
      * Verifies e-mail for a user.
-     *
+     * 
      * @param {string} username User name.
      * @param {Object} [options]
      * @param {function()} [options.success] Success callback.
@@ -1732,7 +1732,7 @@
     /**
      * Restores user stored locally on the device. This method is called by
      * Kinvey.init(), and should not be called anywhere else.
-     *
+     * 
      * @private
      */
     _restore: function() {
@@ -1754,11 +1754,11 @@
 
     /**
      * Creates new user collection.
-     *
+     * 
      * @example <code>
      * var collection = new Kinvey.UserCollection();
      * </code>
-     *
+     * 
      * @name Kinvey.UserCollection
      * @constructor
      * @extends Kinvey.Collection
@@ -1772,7 +1772,7 @@
 
     /**
      * Clears collection. This action is not allowed.
-     *
+     * 
      * @override
      */
     clear: function(options) {
@@ -1788,7 +1788,7 @@
   Kinvey.Metadata = Base.extend({
     /**
      * Creates a new metadata instance.
-     *
+     * 
      * @name Kinvey.Metadata
      * @constructor
      * @param {Object} [attr] Attributes containing metadata.
@@ -1804,7 +1804,7 @@
 
     /**
      * Adds item read permissions for user.
-     *
+     * 
      * @param {string} user User id.
      */
     addReader: function(user) {
@@ -1816,7 +1816,7 @@
 
     /**
      * Adds item read permissions for group.
-     *
+     * 
      * @param {string} group Group id.
      */
     addReaderGroup: function(group) {
@@ -1828,7 +1828,7 @@
 
     /**
      * Adds item write permissions for user.
-     *
+     * 
      * @param {string} user User id.
      */
     addWriter: function(user) {
@@ -1840,7 +1840,7 @@
 
     /**
      * Adds item write permission for user group.
-     *
+     * 
      * @param {string} group Group id.
      */
     addWriterGroup: function(group) {
@@ -1852,7 +1852,7 @@
 
     /**
      * Returns the entity owner, or null if not set.
-     *
+     * 
      * @return {string} user User id.
      */
     creator: function() {
@@ -1861,7 +1861,7 @@
 
     /**
      * Returns all reader groups.
-     *
+     * 
      * @return {Array} List of groups.
      */
     getReaderGroups: function() {
@@ -1870,7 +1870,7 @@
 
     /**
      * Returns all readers.
-     *
+     * 
      * @return {Array} List of readers.
      */
     getReaders: function() {
@@ -1879,7 +1879,7 @@
 
     /**
      * Returns all writer groups.
-     *
+     * 
      * @return {Array} List of groups.
      */
     getWriterGroups: function() {
@@ -1888,7 +1888,7 @@
 
     /**
      * Returns all writers.
-     *
+     * 
      * @return {Array} List of writers.
      */
     getWriters: function() {
@@ -1899,7 +1899,7 @@
      * Returns whether the current user owns the item. This method
      * is only useful when the class is created with a predefined
      * ACL.
-     *
+     * 
      * @returns {boolean}
      */
     isOwner: function() {
@@ -1915,7 +1915,7 @@
 
     /**
      * Returns last modified date, or null if not set.
-     *
+     * 
      * @return {string} ISO-8601 formatted date.
      */
     lastModified: function() {
@@ -1924,7 +1924,7 @@
 
     /**
      * Returns whether the current user has write permissions.
-     *
+     * 
      * @returns {Boolean}
      */
     hasWritePermissions: function() {
@@ -1941,7 +1941,7 @@
 
     /**
      * Returns whether the item is globally readable.
-     *
+     * 
      * @returns {Boolean}
      */
     isGloballyReadable: function() {
@@ -1950,7 +1950,7 @@
 
     /**
      * Returns whether the item is globally writable.
-     *
+     * 
      * @returns {Boolean}
      */
     isGloballyWritable: function() {
@@ -1959,7 +1959,7 @@
 
     /**
      * Removes item read permissions for user.
-     *
+     * 
      * @param {string} user User id.
      */
     removeReader: function(user) {
@@ -1973,7 +1973,7 @@
 
     /**
      * Removes item read permissions for group.
-     *
+     * 
      * @param {string} group Group id.
      */
     removeReaderGroup: function(group) {
@@ -1987,7 +1987,7 @@
 
     /**
      * Removes item write permissions for user.
-     *
+     * 
      * @param {string} user User id.
      */
     removeWriter: function(user) {
@@ -2001,7 +2001,7 @@
 
     /**
      * Removes item write permissions for group.
-     *
+     * 
      * @param {string} group Group id.
      */
     removeWriterGroup: function(group) {
@@ -2015,7 +2015,7 @@
 
     /**
      * Sets whether the item is globally readable.
-     *
+     * 
      * @param {Boolean} flag
      */
     setGloballyReadable: function(flag) {
@@ -2024,7 +2024,7 @@
 
     /**
      * Sets whether the item is globally writable.
-     *
+     * 
      * @param {Boolean} flag
      */
     setGloballyWritable: function(flag) {
@@ -2033,7 +2033,7 @@
 
     /**
      * Returns JSON representation. Used by JSON#stringify.
-     *
+     * 
      * @returns {object} JSON representation.
      */
     toJSON: function() {
@@ -2051,11 +2051,11 @@
 
     /**
      * Creates a new query.
-     *
+     * 
      * @example <code>
      * var query = new Kinvey.Query();
      * </code>
-     *
+     * 
      * @name Kinvey.Query
      * @constructor
      * @param {Object} [builder] One of Kinvey.Query.* builders.
@@ -2068,13 +2068,13 @@
 
     /**
      * Sets an all condition on the current key.
-     *
+     * 
      * @example <code>
      * // Attribute "field" must be an Array containing both "foo" and "bar".
      * var query = new Kinvey.Query();
      * query.on('field').all(['foo', 'bar']);
      * </code>
-     *
+     * 
      * @param {Array} expected Array of expected values.
      * @throws {Error}
      *           <ul>
@@ -2094,7 +2094,7 @@
 
     /**
      * Sets an AND condition.
-     *
+     * 
      * @example <code>
      * // Attribute "field1" must have value "foo", and "field2" must have value "bar".
      * var query1 = new Kinvey.Query();
@@ -2103,7 +2103,7 @@
      * query2.on('field2').equal('bar');
      * query1.and(query2);
      * </code>
-     *
+     * 
      * @param {Kinvey.Query} query Query to AND.
      * @throws {Error} On invalid instance.
      * @return {Kinvey.Query} Current instance.
@@ -2115,13 +2115,13 @@
 
     /**
      * Sets an equal condition on the current key.
-     *
+     * 
      * @example <code>
      * // Attribute "field" must have value "foo".
      * var query = new Kinvey.Query();
      * query.on('field').equal('foo');
      * </code>
-     *
+     * 
      * @param {*} expected Expected value.
      * @throws {Error}
      *           <ul>
@@ -2137,13 +2137,13 @@
 
     /**
      * Sets an exist condition on the current key.
-     *
+     * 
      * @example <code>
      * // Attribute "field" must exist.
      * var query = new Kinvey.Query();
      * query.on('field').exist();
      * </code>
-     *
+     * 
      * @param {boolean} [expected] Boolean indicating whether field must be
      *          present. Defaults to true.
      * @throws {Error}
@@ -2163,13 +2163,13 @@
 
     /**
      * Sets a greater than condition on the current key.
-     *
+     * 
      * @example <code>
      * // Attribute "field" must have a value greater than 25.
      * var query = new Kinvey.Query();
      * query.on('field').greaterThan(25);
      * </code>
-     *
+     * 
      * @param {*} value Compared value.
      * @throws {Error}
      *           <ul>
@@ -2185,13 +2185,13 @@
 
     /**
      * Sets a greater than equal condition on the current key.
-     *
+     * 
      * @example <code>
      * // Attribute "field" must have a value greater than or equal to 25.
      * var query = new Kinvey.Query();
      * query.on('field').greaterThanEqual(25);
      * </code>
-     *
+     * 
      * @param {*} value Compared value.
      * @throws {Error}
      *           <ul>
@@ -2208,13 +2208,13 @@
     /**
      * Sets an in condition on the current key. Method has underscore
      * postfix since "in" is a reserved word.
-     *
+     * 
      * @example <code>
      * // Attribute "field" must be an Array containing "foo" and/or "bar".
      * var query = new Kinvey.Query();
      * query.on('field').in_(['foo', 'bar']);
      * </code>
-     *
+     * 
      * @param {Array} expected Array of expected values.
      * @throws {Error}
      *           <ul>
@@ -2234,13 +2234,13 @@
 
     /**
      * Sets a less than condition on the current key.
-     *
+     * 
      * @example <code>
      * // Attribute "field" must have a value less than 25.
      * var query = new Kinvey.Query();
      * query.on('field').lessThan(25);
      * </code>
-     *
+     * 
      * @param {*} value Compared value.
      * @throws {Error}
      *           <ul>
@@ -2256,13 +2256,13 @@
 
     /**
      * Sets a less than equal condition on the current key.
-     *
+     * 
      * @example <code>
      * // Attribute "field" must have a value less than or equal to 25.
      * var query = new Kinvey.Query();
      * query.on('field').lessThanEqual(25);
      * </code>
-     *
+     * 
      * @param {*} value Compared value.
      * @throws {Error}
      *           <ul>
@@ -2278,13 +2278,13 @@
 
     /**
      * Sets a near sphere condition on the current key.
-     *
+     * 
      * @example <code>
      * // Attribute "field" must be a point within a 10 mile radius of [-71, 42].
      * var query = new Kinvey.Query();
      * query.on('field').nearSphere([-71, 42], 10);
      * </code>
-     *
+     * 
      * @param {Array} point Point [lng, lat].
      * @param {number} [maxDistance] Max distance from point in miles.
      * @throws {Error}
@@ -2308,13 +2308,13 @@
 
     /**
      * Sets a not equal condition on the current key.
-     *
+     * 
      * @example <code>
      * // Attribute "field" must have a value not equal to "foo".
      * var query = new Kinvey.Query();
      * query.on('field').notEqual('foo');
      * </code>
-     *
+     * 
      * @param {*} value Unexpected value.
      * @throws {Error}
      *           <ul>
@@ -2330,13 +2330,13 @@
 
     /**
      * Sets a not in condition on the current key.
-     *
+     * 
      * @example <code>
      * // Attribute "field" must have a value not equal to "foo" or "bar".
      * var query = new Kinvey.Query();
      * query.on('field').notIn(['foo', 'bar']);
      * </code>
-     *
+     * 
      * @param {Array} unexpected Array of unexpected values.
      * @throws {Error}
      *           <ul>
@@ -2356,7 +2356,7 @@
 
     /**
      * Sets key under condition.
-     *
+     * 
      * @param {string} key Key under condition.
      * @return {Kinvey.Query} Current instance.
      */
@@ -2367,7 +2367,7 @@
 
     /**
      * Sets an OR condition.
-     *
+     * 
      * @example <code>
      * // Attribute "field1" must have value "foo", or "field2" must have value "bar".
      * var query1 = new Kinvey.Query();
@@ -2376,7 +2376,7 @@
      * query2.on('field2').equal('bar');
      * query1.or(query2);
      * </code>
-     *
+     * 
      * @param {Kinvey.Query} query Query to OR.
      * @throws {Error} On invalid instance.
      * @return {Kinvey.Query} Current instance.
@@ -2388,13 +2388,13 @@
 
     /**
      * Sets a not in condition on the current key.
-     *
+     * 
      * @example <code>
      * // Attribute "field" must have a value starting with foo.
      * var query = new Kinvey.Query();
      * query.on('field').regex(/^foo/);
      * </code>
-     *
+     * 
      * @param {object} expected Regular expression.
      * @throws {Error} On invalid regular expression.
      * @return {Kinvey.Query} Current instance.
@@ -2406,7 +2406,7 @@
 
     /**
      * Resets all filters.
-     *
+     * 
      * @return {Kinvey.Query} Current instance.
      */
     reset: function() {
@@ -2416,7 +2416,7 @@
 
     /**
      * Sets the query limit.
-     *
+     * 
      * @param {number} limit Limit.
      * @return {Kinvey.Query} Current instance.
      */
@@ -2427,7 +2427,7 @@
 
     /**
      * Sets the query skip.
-     *
+     * 
      * @param {number} skip Skip.
      * @return {Kinvey.Query} Current instance.
      */
@@ -2438,13 +2438,13 @@
 
     /**
      * Sets a size condition on the current key.
-     *
+     * 
      * @example <code>
      * // Attribute "field" must be an Array with 25 elements.
      * var query = new Kinvey.Query();
      * query.on('field').size(25);
      * </code>
-     *
+     * 
      * @param {number} expected Expected value.
      * @throws {Error}
      *           <ul>
@@ -2460,7 +2460,7 @@
 
     /**
      * Sets the query sort.
-     *
+     * 
      * @param {number} [direction] Sort direction, or null to reset sort.
      *          Defaults to ascending.
      * @return {Kinvey.Query} Current instance.
@@ -2475,7 +2475,7 @@
 
     /**
      * Returns JSON representation.
-     *
+     * 
      * @return {Object} JSON representation.
      */
     toJSON: function() {
@@ -2484,13 +2484,13 @@
 
     /**
      * Sets a within box condition on the current key.
-     *
+     * 
      * @example <code>
      * // Attribute "field" must be a point within the box [-72, 41], [-70, 43].
      * var query = new Kinvey.Query();
      * query.on('field').withinBox([[-72, 41], [-70, 43]]);
      * </code>
-     *
+     * 
      * @param {Array} points Array of two points [[lng, lat], [lng, lat]].
      * @throws {Error}
      *           <ul>
@@ -2510,13 +2510,13 @@
 
     /**
      * Sets a within center sphere condition on the current key.
-     *
+     * 
      * @example <code>
      * // Attribute "field" must be a point within a 10 mile radius of [-71, 42].
      * var query = new Kinvey.Query();
      * query.on('field').withinCenterSphere([-72, 41], 0.0025);
      * </code>
-     *
+     * 
      * @param {Array} point Point [lng, lat].
      * @param {number} radius Radius in radians.
      * @throws {Error}
@@ -2540,7 +2540,7 @@
 
     /**
      * Sets a within polygon condition on the current key.
-     *
+     * 
      * @param {Array} points Array of points [[lng, lat], ...].
      * @throws {Error}
      *           <ul>
@@ -2560,7 +2560,7 @@
 
     /**
      * Helper function to forward condition to builder.
-     *
+     * 
      * @private
      * @throws {Error}
      *           <ul>
@@ -2581,14 +2581,14 @@
     // Basic operators.
     /**
      * Equal operator. Checks if an element equals the specified expression.
-     *
+     * 
      * @constant
      */
     EQUAL: 16,
 
     /**
      * Exist operator. Checks if an element exists.
-     *
+     * 
      * @constant
      */
     EXIST: 17,
@@ -2596,7 +2596,7 @@
     /**
      * Less than operator. Checks if an element is less than the specified
      * expression.
-     *
+     * 
      * @constant
      */
     LESS_THAN: 18,
@@ -2604,7 +2604,7 @@
     /**
      * Less than or equal to operator. Checks if an element is less than or
      * equal to the specified expression.
-     *
+     * 
      * @constant
      */
     LESS_THAN_EQUAL: 19,
@@ -2612,7 +2612,7 @@
     /**
      * Greater than operator. Checks if an element is greater than the
      * specified expression.
-     *
+     * 
      * @constant
      */
     GREATER_THAN: 20,
@@ -2620,7 +2620,7 @@
     /**
      * Greater than or equal to operator. Checks if an element is greater
      * than or equal to the specified expression.
-     *
+     * 
      * @constant
      */
     GREATER_THAN_EQUAL: 21,
@@ -2628,7 +2628,7 @@
     /**
      * Not equal operator. Checks if an element does not equals the
      * specified expression.
-     *
+     * 
      * @constant
      */
     NOT_EQUAL: 22,
@@ -2636,7 +2636,7 @@
     /**
      * Regular expression operator. Checks if an element matches the specified
      * expression.
-     *
+     * 
      * @constant
      */
     REGEX: 23,
@@ -2645,7 +2645,7 @@
     /**
      * Near sphere operator. Checks if an element is close to the point in
      * the specified expression.
-     *
+     * 
      * @constant
      */
     NEAR_SPHERE: 1024,
@@ -2653,7 +2653,7 @@
     /**
      * Within box operator. Checks if an element is within the box shape as
      * defined by the expression.
-     *
+     * 
      * @constant
      */
     WITHIN_BOX: 1025,
@@ -2661,7 +2661,7 @@
     /**
      * Within center sphere operator. Checks if an element is within a
      * center sphere as defined by the expression.
-     *
+     * 
      * @constant
      */
     WITHIN_CENTER_SPHERE: 1026,
@@ -2669,7 +2669,7 @@
     /**
      * Within polygon operator. Checks if an element is within a polygon
      * shape as defined by the expression.
-     *
+     * 
      * @constant
      */
     WITHIN_POLYGON: 1027,
@@ -2678,7 +2678,7 @@
      * Max distance operator. Checks if an element is within a certain
      * distance to the point in the specified expression. This operator
      * requires the use of the near operator as well.
-     *
+     * 
      * @constant
      */
     MAX_DISTANCE: 1028,
@@ -2687,7 +2687,7 @@
     /**
      * In operator. Checks if an element matches any values in the specified
      * expression.
-     *
+     * 
      * @constant
      */
     IN: 2048,
@@ -2695,7 +2695,7 @@
     /**
      * Not in operator. Checks if an element does not match any value in the
      * specified expression.
-     *
+     * 
      * @constant
      */
     NOT_IN: 2049,
@@ -2703,14 +2703,14 @@
     // Joining operators.
     /**
      * And operator. Supported implicitly.
-     *
+     * 
      * @constant
      */
     AND: 4096,
 
     /**
      * Or operator. Not supported.
-     *
+     * 
      * @constant
      */
     OR: 4097,
@@ -2719,7 +2719,7 @@
     /**
      * All operator. Checks if an element matches all values in the
      * specified expression
-     *
+     * 
      * @constant
      */
     ALL: 8192,
@@ -2727,7 +2727,7 @@
     /**
      * Size operator. Checks if the size of an element matches the specified
      * expression.
-     *
+     * 
      * @constant
      */
     SIZE: 8193,
@@ -2735,21 +2735,21 @@
     // Sort operators.
     /**
      * Ascending sort operator.
-     *
+     * 
      * @constant
      */
     ASC: 16384,
 
     /**
      * Descending sort operator.
-     *
+     * 
      * @constant
      */
     DESC: 16385,
 
     /**
      * Returns a query builder.
-     *
+     * 
      * @return {Object} One of Kinvey.Query.* builders.
      */
     factory: function() {
@@ -2768,7 +2768,7 @@
 
     /**
      * Creates a new MongoDB query builder.
-     *
+     * 
      * @name Kinvey.Query.MongoBuilder
      * @constructor
      */
@@ -2780,7 +2780,7 @@
 
     /**
      * Adds condition.
-     *
+     * 
      * @param {string} field Field.
      * @param {number} condition Condition.
      * @param {*} value Expression.
@@ -2876,7 +2876,7 @@
 
     /**
      * Resets query.
-     *
+     * 
      */
     reset: function() {
       this.query = null;
@@ -2884,7 +2884,7 @@
 
     /**
      * Sets query limit.
-     *
+     * 
      * @param {number} limit Limit, or null to reset limit.
      */
     setLimit: function(limit) {
@@ -2893,7 +2893,7 @@
 
     /**
      * Sets query skip.
-     *
+     * 
      * @param {number} skip Skip, or null to reset skip.
      */
     setSkip: function(skip) {
@@ -2902,7 +2902,7 @@
 
     /**
      * Sets query sort.
-     *
+     * 
      * @param {string} field Field.
      * @param {number} direction Sort direction, or null to reset sort.
      */
@@ -2920,7 +2920,7 @@
 
     /**
      * Returns JSON representation. Used by JSON#stringify.
-     *
+     * 
      * @return {Object} JSON representation.
      */
     toJSON: function() {
@@ -2934,7 +2934,7 @@
 
     /**
      * Helper function to apply complex expression on field.
-     *
+     * 
      * @private
      */
     _set: function(field, expression) {
@@ -2954,11 +2954,11 @@
   Kinvey.Aggregation = Base.extend({
     /**
      * Creates a new aggregation.
-     *
+     * 
      * @example <code>
      * var aggregation = new Kinvey.Aggregation();
      * </code>
-     *
+     * 
      * @name Kinvey.Aggregation
      * @constructor
      * @param {Object} [builder] One of Kinvey.Aggregation.* builders.
@@ -2971,7 +2971,7 @@
 
     /**
      * Adds key under condition.
-     *
+     * 
      * @param {string} key Key under condition.
      * @return {Kinvey.Aggregation} Current instance.
      */
@@ -2982,7 +2982,7 @@
 
     /**
      * Sets the finalize function. Currently not supported.
-     *
+     * 
      * @param {function(doc, counter)} fn Finalize function.
      * @return {Kinvey.Aggregation} Current instance.
      */
@@ -2992,7 +2992,7 @@
 
     /**
      * Sets the initial counter object.
-     *
+     * 
      * @param {Object} counter Counter object.
      * @return {Kinvey.Aggregation} Current instance.
      */
@@ -3003,7 +3003,7 @@
 
     /**
      * Sets query.
-     *
+     * 
      * @param {Kinvey.Query} [query] query.
      * @throws {Error} On invalid instance.
      * @return {Kinvey.Aggregation} Current instance.
@@ -3018,7 +3018,7 @@
 
     /**
      * Sets the reduce function.
-     *
+     * 
      * @param {function(doc, counter)} fn Reduce function.
      * @return {Kinvey.Aggregation} Current instance.
      */
@@ -3029,7 +3029,7 @@
 
     /**
      * Returns JSON representation.
-     *
+     * 
      * @return {Object} JSON representation.
      */
     toJSON: function() {
@@ -3040,7 +3040,7 @@
 
     /**
      * Returns an aggregation builder.
-     *
+     * 
      * @return {Object} One of Kinvey.Aggregation.* builders.
      */
     factory: function() {
@@ -3062,7 +3062,7 @@
 
     /**
      * Creates a new MongoDB aggregation builder.
-     *
+     * 
      * @name Kinvey.Aggregation.MongoBuilder
      * @constructor
      */
@@ -3076,7 +3076,7 @@
 
     /**
      * Adds key under condition.
-     *
+     * 
      * @param {string} key Key under condition.
      * @return {Kinvey.Aggregation} Current instance.
      */
@@ -3086,7 +3086,7 @@
 
     /**
      * Sets the finalize function.
-     *
+     * 
      * @param {function(counter)} fn Finalize function.
      */
     setFinalize: function(fn) {
@@ -3095,7 +3095,7 @@
 
     /**
      * Sets the initial counter object.
-     *
+     * 
      * @param {Object} counter Counter object.
      */
     setInitial: function(counter) {
@@ -3104,7 +3104,7 @@
 
     /**
      * Sets query.
-     *
+     * 
      * @param {Kinvey.Query} [query] query.
      */
     setQuery: function(query) {
@@ -3114,7 +3114,7 @@
 
     /**
      * Sets the reduce function.
-     *
+     * 
      * @param {function(doc, out)} fn Reduce function.
      */
     setReduce: function(fn) {
@@ -3123,7 +3123,7 @@
 
     /**
      * Returns JSON representation.
-     *
+     * 
      * @return {Object} JSON representation.
      */
     toJSON: function() {
@@ -3143,36 +3143,50 @@
     }
   });
 
+  
+  /**
+   * Executes a custom command.
+   * 
+   * @param {string} id The endpoint.
+   * @param {Object} [args] Command arguments.
+   * @param {Object} options Options.
+   */
+  Kinvey.execute = function(id, args, options) {
+    var store = new Kinvey.Store.Rpc();
+    store.execute(id, args, options);
+  };
+  
+
   /**
    * Kinvey Store namespace. Home to all stores.
-   *
+   * 
    * @namespace
    */
   Kinvey.Store = {
     /**
      * AppData store.
-     *
+     * 
      * @constant
      */
     APPDATA: 'appdata',
 
     /**
      * Cached store.
-     *
+     * 
      * @constant
      */
     CACHED: 'cached',
 
     /**
      * Offline store.
-     *
+     * 
      * @constant
      */
     OFFLINE: 'offline',
 
     /**
      * Returns store.
-     *
+     * 
      * @param {string} collection Collection name.
      * @param {string} name Store, or store name.
      * @param {Object} options Store options.
@@ -3204,7 +3218,7 @@
 
     /**
      * Constructor
-     *
+     * 
      * @name Kinvey.Store.Rpc
      * @constructor
      * @param {Object} [options] Options.
@@ -3215,7 +3229,7 @@
 
     /**
      * Configures store.
-     *
+     * 
      * @param {Object} options
      * @param {function(response, info)} [options.success] Success callback.
      * @param {function(error, info)} [options.error] Failure callback.
@@ -3229,8 +3243,20 @@
     },
 
     /**
+     * Executes a custom command.
+     * 
+     * @param {string} id The endpoint.
+     * @param {Object} args Command arguments,.
+     * @param {Object} [options] Options.
+     */
+    execute: function(id, args, options) {
+      var url = this._getUrl([ 'custom', id ]);
+      this._send('POST', url, JSON.stringify(args), options);
+    },
+    
+    /**
      * Resets password for a user.
-     *
+     * 
      * @param {string} username User name.
      * @param {Object} [options] Options.
      */
@@ -3242,7 +3268,7 @@
 
     /**
      * Verifies e-mail for a user.
-     *
+     * 
      * @param {string} username User name.
      * @param {Object} [options] Options.
      */
@@ -3254,7 +3280,7 @@
 
     /**
      * Constructs URL.
-     *
+     * 
      * @private
      * @param {Array} parts URL parts.
      * @return {string} URL.
@@ -3291,7 +3317,7 @@
 
     /**
      * Creates a new store.
-     *
+     * 
      * @name Kinvey.Store.AppData
      * @constructor
      * @param {string} collection Collection name.
@@ -3309,7 +3335,7 @@
 
     /**
      * Aggregates objects from the store.
-     *
+     * 
      * @param {Object} aggregation Aggregation.
      * @param {Object} [options] Options.
      */
@@ -3320,7 +3346,7 @@
 
     /**
      * Configures store.
-     *
+     * 
      * @param {Object} options
      * @param {function(response, info)} [options.success] Success callback.
      * @param {function(error, info)} [options.error] Failure callback.
@@ -3335,7 +3361,7 @@
 
     /**
      * Logs in user.
-     *
+     * 
      * @param {Object} object
      * @param {Object} [options] Options.
      */
@@ -3352,7 +3378,7 @@
 
     /**
      * Logs out user.
-     *
+     * 
      * @param {Object} object
      * @param {Object} [options] Options.
      */
@@ -3363,13 +3389,13 @@
 
     /**
      * Queries the store for a specific object.
-     *
+     * 
      * @param {string} id Object id.
      * @param {Object} [options] Options.
      */
     query: function(id, options) {
       options || (options = {});
-
+      
       // Force use of application credentials if pinging.
       null === id && (options.appc = true);
 
@@ -3379,7 +3405,7 @@
 
     /**
      * Queries the store for multiple objects.
-     *
+     * 
      * @param {Object} query Query object.
      * @param {Object} [options] Options.
      */
@@ -3392,7 +3418,7 @@
 
     /**
      * Removes object from the store.
-     *
+     * 
      * @param {Object} object Object to be removed.
      * @param {Object} [options] Options.
      */
@@ -3403,7 +3429,7 @@
 
     /**
      * Removes multiple objects from the store.
-     *
+     * 
      * @param {Object} query Query object.
      * @param {Object} [options] Options.
      */
@@ -3414,7 +3440,7 @@
 
     /**
      * Saves object to the store.
-     *
+     * 
      * @param {Object} object Object to be saved.
      * @param {Object} [options] Options.
      */
@@ -3433,7 +3459,7 @@
 
     /**
      * Encodes value for use in query string.
-     *
+     * 
      * @private
      * @param {*} value Value to be encoded.
      * @return {string} Encoded value.
@@ -3447,7 +3473,7 @@
 
     /**
      * Constructs URL.
-     *
+     * 
      * @private
      * @param {Object} parts URL parts.
      * @return {string} URL.
@@ -3501,7 +3527,7 @@
   var Database = Base.extend({
     /**
      * Creates a new database.
-     *
+     * 
      * @name Database
      * @constructor
      * @private
@@ -3518,7 +3544,7 @@
 
     /**
      * Aggregates objects in database.
-     *
+     * 
      * @param {Object} aggregation Aggregation object.
      * @param {Object} [options]
      */
@@ -3550,7 +3576,7 @@
 
     /**
      * Queries the database for a specific object.
-     *
+     * 
      * @param {string} id Object id.
      * @param {Object} [options]
      */
@@ -3584,7 +3610,7 @@
 
     /**
      * Queries the database for multiple objects.
-     *
+     * 
      * @param {Object} query Query object.
      * @param {Object} [options]
      */
@@ -3648,7 +3674,7 @@
 
     /**
      * Removes object from the database.
-     *
+     * 
      * @param {Object} object Object to be removed.
      * @param {Object} [options]
      */
@@ -3684,7 +3710,7 @@
 
     /**
      * Removes multiple objects from the database.
-     *
+     * 
      * @param {Object} query Query object.
      * @param {Object} [options]
      */
@@ -3721,7 +3747,7 @@
 
     /**
      * Saves object to the database.
-     *
+     * 
      * @param {Object} object Object to be saved.
      * @param {Object} [options]
      */
@@ -3767,7 +3793,7 @@
 
     /**
      * Clears the entire database.
-     *
+     * 
      * @param {Object} [options]
      */
     clear: function(options) {
@@ -3787,7 +3813,7 @@
 
     /**
      * Retrieves multiple objects at once.
-     *
+     * 
      * @param {Array} list List of object ids.
      * @param {Object} [options]
      */
@@ -3822,7 +3848,7 @@
 
     /**
      * Removes multiple objects at once.
-     *
+     * 
      * @param {Array} list List of object ids.
      * @param {Object} [options]
      */
@@ -3851,7 +3877,7 @@
 
     /**
      * Writes data to database.
-     *
+     * 
      * @param {string} type Data type.
      * @param {*} key Data key.
      * @param {*} data Data.
@@ -3877,7 +3903,7 @@
 
     /**
      * Writes aggregation to database.
-     *
+     * 
      * @private
      * @param {Object} aggregation Aggregation object.
      * @param {Array} response Aggregation.
@@ -3910,7 +3936,7 @@
 
     /**
      * Writes query and resulting objects to database.
-     *
+     * 
      * @private
      * @param {Object} query Query object.
      * @param {Array} response Response.
@@ -3929,7 +3955,7 @@
             query: this._getKey(query),
             response: result
           });
-
+  
           // Handle transaction status.
           txn.oncomplete = function() {
             options.success(response);
@@ -3962,7 +3988,7 @@
 
     /**
      * Writes object to database.
-     *
+     * 
      * @private
      * @param {Object} object Object.
      * @param {Object} options Options.
@@ -3984,7 +4010,7 @@
 
     /**
      * Returns pending transactions.
-     *
+     * 
      * @param {object} [options]
      */
     getTransactions: function(options) {
@@ -4033,7 +4059,7 @@
 
     /**
      * Removes transactions.
-     *
+     * 
      * @param {Object} transactions
      * @param {Object} [options]
      */
@@ -4072,7 +4098,7 @@
 
     /**
      * Adds a transaction for object to transaction store.
-     *
+     * 
      * @private
      * @param {IDBObjectStore} store Transaction store.
      * @param {Array|Object} objects Object(s) under transaction.
@@ -4100,7 +4126,7 @@
 
     /**
      * Resolves object references.
-     *
+     * 
      * @private
      * @param {Object} object
      * @param {Array} resolve Fields to resolve.
@@ -4124,7 +4150,7 @@
 
     /**
      * Resolves a single reference in a document.
-     *
+     * 
      * @private
      * @param {Array} segments Field path to be resolved.
      * @param {Object} doc Document to search in.
@@ -4215,7 +4241,7 @@
 
     /**
      * Extract and saves references from object attributes.
-     *
+     * 
      * @private
      * @param {Object} object Attributes.
      * @param {Array} references List of references.
@@ -4255,7 +4281,7 @@
                 }
               }
             }
-
+            
             // Third case: field is a plain object.
             else if(doc[field] instanceof Object) {
               doc = doc[field];// Descent into doc.
@@ -4296,7 +4322,7 @@
     /**
      * Returns a random id. Actually, this method concatenates the current
      * timestamp with a random string.
-     *
+     * 
      * @return {string} Random id.
      */
     _getRandomId: function() {
@@ -4305,7 +4331,7 @@
 
     /**
      * Returns key.
-     *
+     * 
      * @private
      * @param {Object} object
      * @return {string} Key.
@@ -4317,7 +4343,7 @@
 
     /**
      * Returns schema for database store.
-     *
+     * 
      * @private
      * @param {string} store Store name.
      * @return {Object} Schema.
@@ -4339,7 +4365,7 @@
 
     /**
      * Mutates the database schema.
-     *
+     * 
      * @private
      * @param {function()} upgrade Upgrade callback.
      * @param {function(database)} success Success callback.
@@ -4354,7 +4380,7 @@
 
     /**
      * Opens the database.
-     *
+     * 
      * @private
      * @param {integer} [version] Database version.
      * @param {function()} [update] Upgrade callback.
@@ -4442,7 +4468,7 @@
 
     /**
      * Returns complete options object.
-     *
+     * 
      * @param {Object} options Options.
      * @return {Object} Options.
      */
@@ -4465,7 +4491,7 @@
 
     /**
      * Opens transaction for store(s).
-     *
+     * 
      * @private
      * @param {Array|string} stores Store name(s).
      * @param {string} mode Transaction mode.
@@ -4542,7 +4568,7 @@
 
     /**
      * Creates new cached store.
-     *
+     * 
      * @name Kinvey.Store.Cached
      * @constructor
      * @param {string} collection Collection.
@@ -4564,7 +4590,7 @@
 
     /**
      * Aggregates objects from the store.
-     *
+     * 
      * @param {Object} aggregation Aggregation object.
      * @param {Object} [options] Options.
      */
@@ -4575,7 +4601,7 @@
 
     /**
      * Configures store.
-     *
+     * 
      * @param {Object} options
      * @param {string} [options.policy] Cache policy.
      * @param {Object} [options.store] Store options.
@@ -4596,7 +4622,7 @@
 
     /**
      * Logs in user.
-     *
+     * 
      * @param {Object} object
      * @param {Object} [options] Options.
      */
@@ -4607,7 +4633,7 @@
 
     /**
      * Logs out user.
-     *
+     * 
      * @param {Object} object
      * @param {Object} [options] Options.
      */
@@ -4618,7 +4644,7 @@
 
     /**
      * Queries the store for a specific object.
-     *
+     * 
      * @param {string} id Object id.
      * @param {Object} [options] Options.
      */
@@ -4629,7 +4655,7 @@
 
     /**
      * Queries the store for multiple objects.
-     *
+     * 
      * @param {Object} query Query object.
      * @param {Object} [options] Options.
      */
@@ -4640,7 +4666,7 @@
 
     /**
      * Removes object from the store.
-     *
+     * 
      * @param {Object} object Object to be removed.
      * @param {Object} [options] Options.
      */
@@ -4651,7 +4677,7 @@
 
     /**
      * Removes multiple objects from the store.
-     *
+     * 
      * @param {Object} query Query object.
      * @param {Object} [options] Options.
      */
@@ -4662,7 +4688,7 @@
 
     /**
      * Saves object to the store.
-     *
+     * 
      * @param {Object} object Object to be saved.
      * @param {Object} [options] Options.
      */
@@ -4673,7 +4699,7 @@
 
     /**
      * Returns full options object.
-     *
+     * 
      * @private
      * @param {Object} options Options.
      * @return {Object} Options.
@@ -4695,7 +4721,7 @@
 
     /**
      * Performs read operation, according to the caching policy.
-     *
+     * 
      * @private
      * @param {string} operation Operation. One of aggregation, query or
      *          queryWithQuery.
@@ -4765,7 +4791,7 @@
 
     /**
      * Returns whether both the local and network store should be used.
-     *
+     * 
      * @private
      * @param {string} policy Cache policy.
      * @return {boolean}
@@ -4777,7 +4803,7 @@
 
     /**
      * Returns whether both the local and network success handler should be invoked.
-     *
+     * 
      * @private
      * @param {string} policy Cache policy.
      * @return {boolean}
@@ -4788,7 +4814,7 @@
 
     /**
      * Returns whether another store should be tried on initial failure.
-     *
+     * 
      * @private
      * @param {string} policy Cache policy.
      * @return {boolean}
@@ -4800,7 +4826,7 @@
 
     /**
      * Returns whether network store should be accessed first.
-     *
+     * 
      * @private
      * @param {string} policy Cache policy.
      * @return {boolean}
@@ -4812,7 +4838,7 @@
 
     /**
      * Returns whether the cache should be updated.
-     *
+     * 
      * @private
      * @param {string} policy Cache policy.
      * @return {boolean}
@@ -4825,7 +4851,7 @@
     /**
      * Performs write operation, and handles the response according to the
      * caching policy.
-     *
+     * 
      * @private
      * @param {string} operation Operation. One of remove, removeWithquery or save.
      * @param {*} arg Operation argument.
@@ -4882,21 +4908,21 @@
     // Cache policies.
     /**
      * No Cache policy. Ignore cache and only use the network.
-     *
+     * 
      * @constant
      */
     NO_CACHE: 'nocache',
 
     /**
      * Cache Only policy. Don't use the network.
-     *
+     * 
      * @constant
      */
     CACHE_ONLY: 'cacheonly',
 
     /**
      * Cache First policy. Pull from cache if available, otherwise network.
-     *
+     * 
      * @constant
      */
     CACHE_FIRST: 'cachefirst',
@@ -4904,28 +4930,28 @@
     /**
      * Cache First No Refresh policy. Pull from cache if available, otherwise
      * network. Does not update cache in the background.
-     *
+     * 
      * @constant
      */
     CACHE_FIRST_NO_REFRESH: 'cachefirst-norefresh',
 
     /**
      * Network first policy. Pull from network if available, otherwise cache.
-     *
+     * 
      * @constant
      */
     NETWORK_FIRST: 'networkfirst',
 
     /**
      * Both policy. Pull the cache copy (if it exists), then pull from network.
-     *
+     * 
      * @constant
      */
     BOTH: 'both',
 
     /**
      * Clears the entire cache.
-     *
+     * 
      * @param {Object} [options] Options.
      */
     clear: function(options) {
@@ -4940,7 +4966,7 @@
 
     /**
      * Creates a new offline store.
-     *
+     * 
      * @name Kinvey.Store.Offline
      * @constructor
      * @extends Kinvey.Store.Cached
@@ -4962,7 +4988,7 @@
 
     /**
      * Configures store.
-     *
+     * 
      * @override
      * @see Kinvey.Store.Cached#configure
      * @param {Object} options
@@ -4976,7 +5002,7 @@
 
     /**
      * Removes object from the store.
-     *
+     * 
      * @override
      * @see Kinvey.Store.Cached#remove
      */
@@ -4987,7 +5013,7 @@
 
     /**
      * Removes multiple objects from the store.
-     *
+     * 
      * @override
      * @see Kinvey.Store.Cached#removeWithQuery
      */
@@ -4998,7 +5024,7 @@
 
     /**
      * Saves object to the store.
-     *
+     * 
      * @override
      * @see Kinvey.Store.Cached#save
      */
@@ -5009,7 +5035,7 @@
 
     /**
      * Returns complete options object.
-     *
+     * 
      * @private
      * @override
      * @see Kinvey.Store.Cached#_options
@@ -5026,7 +5052,7 @@
 
     /**
      * Wraps success and error handlers to include synchronization.
-     *
+     * 
      * @private
      * @param {Object} scope Synchronization scope.
      * @param {Object} options Options.
@@ -5039,7 +5065,7 @@
           options.success(response, { offline: true });
 
           // If the scope parameter is defined, use the response to scope the
-          // the synchronization to this object only.
+          // the synchronization to this object only. 
           var opts = {
             conflict: options.conflict,
             success: options.complete,
@@ -5067,7 +5093,7 @@
   /**
    * Kinvey Sync namespace definition. This namespace manages the data
    * synchronization between local and remote backend.
-   *
+   * 
    * @namespace
    */
   Kinvey.Sync = {
@@ -5076,13 +5102,13 @@
 
     /**
      * Environment status.
-     *
+     * 
      */
     isOnline: navigator.onLine,
 
     /**
      * Default options.
-     *
+     * 
      */
     options: {
       conflict: null,
@@ -5096,7 +5122,7 @@
 
     /**
      * Configures sync.
-     *
+     * 
      * @param {Object} options
      * @param {Object} options.store Store options.
      * @param {function(collection, cached, remote, options)} options.conflict
@@ -5115,7 +5141,7 @@
 
     /**
      * Sets environment to offline mode.
-     *
+     * 
      */
     offline: function() {
       Kinvey.Sync.isOnline = false;
@@ -5123,7 +5149,7 @@
 
     /**
      * Sets environment to online mode. This will trigger synchronization.
-     *
+     * 
      */
     online: function() {
       if(!Kinvey.Sync.isOnline) {
@@ -5154,7 +5180,7 @@
 
     /**
      * Synchronizes application.
-     *
+     * 
      * @param {Object} [options] Options.
      */
     application: function(options) {
@@ -5170,7 +5196,7 @@
 
     /**
      * Synchronizes collection.
-     *
+     * 
      * @param {string} name Collection name.
      * @param {Object} [options] Options.
      */
@@ -5185,7 +5211,7 @@
 
     /**
      * Returns number of pending synchronization.
-     *
+     * 
      * @param {Object} [options] Options.
      * @param {function(count)} options.success Success callback.
      * @param {function(error)} options.error Failure callback.
@@ -5203,7 +5229,7 @@
 
     /**
      * Synchronizes object.
-     *
+     * 
      * @param {string} collection Collection name.
      * @param {Object} object Object.
      * @param {Object} [options] Options.
@@ -5219,7 +5245,7 @@
 
     /**
      * Sets user context to perform synchronization with.
-     *
+     * 
      * @param {string} username User name, or null to reset the context.
      * @param {string} [password] User password.
      */
@@ -5232,7 +5258,7 @@
     /**
      * Client always wins conflict resolution. Prioritizes cached copy over
      * remote copy.
-     *
+     * 
      * @param {string} collection Collection name.
      * @param {Object} cached Cached copy.
      * @param {Object} remote Remote copy.
@@ -5246,7 +5272,7 @@
 
     /**
      * Leaves conflicts as is.
-     *
+     * 
      * @param {string} collection Collection name.
      * @param {Object} cached Cached copy.
      * @param {Object} remote Remote copy.
@@ -5261,7 +5287,7 @@
     /**
      * Server always wins conflict resolution. Prioritizes remote copy over
      * cached copy.
-     *
+     * 
      * @param {string} collection Collection name.
      * @param {Object} cached Cached copy.
      * @param {Object} remote Remote copy.
@@ -5277,7 +5303,7 @@
 
     /**
      * Returns complete options object.
-     *
+     * 
      * @private
      * @param {Object} [options] Options.
      */
@@ -5299,7 +5325,7 @@
   var Synchronizer = Base.extend({
     /**
      * Creates a new synchronizer.
-     *
+     * 
      * @name Synchronizer
      * @constructor
      * @private
@@ -5323,7 +5349,7 @@
 
     /**
      * Synchronizes all application data.
-     *
+     * 
      * @param {Object} [options]
      * @param {function()} options.start Start callback.
      */
@@ -5368,7 +5394,7 @@
 
     /**
      * Synchronizes a collection.
-     *
+     * 
      * @param {string} name Collection name.
      */
     collection: function(name) {
@@ -5396,7 +5422,7 @@
 
     /**
      * Returns number of pending transactions.
-     *
+     * 
      * @param {string} collection Collection name, or null for all collections.
      */
     count: function(collection) {
@@ -5420,10 +5446,10 @@
         error: this.error
       });
     },
-
+    
     /**
      * Synchronizes an object.
-     *
+     * 
      * @param {string} collection Collection name.
      * @param {Object} object Object.
      */
@@ -5466,7 +5492,7 @@
 
     /**
      * Classifies each transaction as committable, conflicted or canceled.
-     *
+     * 
      * @private
      * @param {string} collection Collection name.
      * @param {Object} transactions Pending transactions.
@@ -5500,7 +5526,7 @@
               // Add to set and continue.
               conflicted.push(id);
               !--pending && complete(committable, conflicted, []);
-            }
+            } 
           };
         };
 
@@ -5525,8 +5551,8 @@
 
     /**
      * Classifies and commits all transactions for a collection.
-     *
-     * @private
+     * 
+     * @private 
      * @param {string} collection Collection name.
      * @param {Object} transactions Pending transactions.
      * @param {Object} data
@@ -5550,7 +5576,7 @@
 
     /**
      * Processes synchronization for collection.
-     *
+     * 
      * @private
      * @param {string} name Collection name.
      * @param {Object} transactions List of pending transactions.
@@ -5573,7 +5599,7 @@
 
     /**
      * Commits a series of transactions.
-     *
+     * 
      * @private
      * @param {Object} objects Objects to commit.
      * @param {Object} data
@@ -5625,7 +5651,7 @@
 
     /**
      * Commits object.
-     *
+     * 
      * @private
      * @param {Object} object Object to commit.
      * @param {Object} data
@@ -5654,7 +5680,7 @@
 
     /**
      * Commits a series of removal transactions.
-     *
+     * 
      * @private
      * @param {Array} objects Objects to commit.
      * @param {Object} data
@@ -5693,7 +5719,7 @@
 
     /**
      * Commits a series of update transactions.
-     *
+     * 
      * @private
      * @param {Array} objects Objects to commit.
      * @param {Object} data
@@ -5728,7 +5754,7 @@
 
     /**
      * Processes synchronization for object.
-     *
+     * 
      * @private
      * @param {string} collection Collection name.
      * @param {string} transaction Transaction timestamp.
@@ -5758,7 +5784,7 @@
 
     /**
      * Retrieves objects from store and database.
-     *
+     * 
      * @param {Array} object List of object ids.
      * @param {Object} data
      * @param {Database} data.db Database
@@ -5794,11 +5820,11 @@
       data.db.multiQuery(objects, handler());
     }
   });
-
+    
 
   /**
    * Kinvey OAuth namespace.
-   *
+   * 
    * @namespace
    */
   Kinvey.OAuth = {
@@ -5815,7 +5841,7 @@
 
     /**
      * Processes request token, and obtains access token for OAuth provider.
-     *
+     * 
      * @param {string} provider OAuth provider.
      * @param {Object} response Response attributes.
      * @param {Object} [options]
@@ -5853,7 +5879,7 @@
 
     /**
      * Creates a new user given its OAuth access tokens. OAuth1.0a only.
-     *
+     * 
      * @param {string} provider OAuth provider.
      * @param {Object} attr User attributes.
      * @param {Object} [options]
@@ -5863,10 +5889,10 @@
     create: function(provider, attr, options) {
       this._send('POST', this._getUrl(provider, 'create'), JSON.stringify(attr), options);
     },
-
+    
     /**
      * Logs in an existing user given its OAuth access tokens. OAuth1.0a only.
-     *
+     * 
      * @param {string} provider OAuth provider.
      * @param {Object} attr User attributes.
      * @param {Object} [options]
@@ -5879,7 +5905,7 @@
 
     /**
      * Requests an OAuth token.
-     *
+     * 
      * @param {string} provider OAuth provider.
      * @param {Object} [options]
      * @param {string} options.redirect Redirect URL.
@@ -5897,7 +5923,7 @@
 
     /**
      * Constructs URL.
-     *
+     * 
      * @private
      * @param {string} provider OAuth provider.
      * @param {string} step OAuth step.
@@ -5932,7 +5958,7 @@
 
   /**
    * UI helper function to perform the entire OAuth flow for a provider.
-   *
+   * 
    * @param {string} provider OAuth provider.
    * @param {Object} [options]
    * @param {string} options.redirect Redirect URL.
