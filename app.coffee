@@ -52,6 +52,9 @@ app.get '/about', (req, res)->
 app.get '/projects', (req, res)->
   res.render 'projects.html'
 
+app.get '/presentations', (req, res)->
+  res.render 'presentations.html'
+
 app.get '/photos', (req, res)->
   res.render 'photos.html'
 
